@@ -386,6 +386,11 @@ void AudioEngineImpl::preload(const std::string& filePath, const std::function<v
     }
 }
 
+void AudioEngineImpl::printCacheSize(bool detail)
+{
+    CCLOG("Cache not support on Anroid");
+}
+
 void AudioEngineImpl::uncache(const std::string& filePath)
 {
     if (_audioPlayerProvider != nullptr)

@@ -294,6 +294,8 @@ public:
      */
     static void preload(const std::string& filePath, std::function<void(bool isSuccess)> callback);
 
+    static void printCacheSize(bool detail);
+    
 protected:
     static void addTask(const std::function<void()>& task);
     static void remove(int audioID);

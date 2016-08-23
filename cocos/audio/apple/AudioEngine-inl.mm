@@ -295,6 +295,21 @@ AudioCache* AudioEngineImpl::preload(const std::string& filePath, std::function<
     return audioCache;
 }
 
+void AudioEngineImpl::printCacheSize(bool detail)
+{
+    long totalSize = 0;
+    for(auto iterator = _audioCaches.begin(); iterator != _audioCaches.end(); iterator++) {
+            totalSize += iterator->second._dataSize;
+            if (detail){
+                float soundCache = iterator->second._dataSize / 1024.f;
+                CCLOG("Sound File: %s Size Cache: %.2f KB", iterator->first.c_str(), soundCache);
+        }
+    }
+    
+    float soundCache = totalSize / 1048576.f;
+    CCLOG("Total Sound Cache %.2f MB", soundCache);
+}
+
 int AudioEngineImpl::play2d(const std::string &filePath ,bool loop ,float volume)
 {
     if (s_ALDevice == nullptr) {

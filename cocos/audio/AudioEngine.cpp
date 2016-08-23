@@ -531,6 +531,14 @@ void AudioEngine::preload(const std::string& filePath, std::function<void(bool i
     }
 }
 
+void AudioEngine::printCacheSize(bool detail)
+{
+    if (_audioEngineImpl)
+    {
+        _audioEngineImpl->printCacheSize(detail);
+    }
+}
+
 void AudioEngine::addTask(const std::function<void()>& task)
 {
     lazyInit();
