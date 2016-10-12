@@ -188,6 +188,7 @@ renderer/CCVertexIndexData.cpp \
 renderer/ccGLStateCache.cpp \
 renderer/CCFrameBuffer.cpp \
 renderer/ccShaders.cpp \
+renderer/KRTextureDebug.cpp \
 vr/CCVRDistortion.cpp \
 vr/CCVRDistortionMesh.cpp \
 vr/CCVRGenericRenderer.cpp \

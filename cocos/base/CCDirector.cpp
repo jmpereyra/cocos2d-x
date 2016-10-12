@@ -181,6 +181,11 @@ Director::~Director(void)
 {
     CCLOGINFO("deallocing Director: %p", this);
 
+    if (_notificationNode)
+    {
+        _notificationNode->onExit(); // add by Elan 2015.7.27
+    }
+    
     CC_SAFE_RELEASE(_FPSLabel);
     CC_SAFE_RELEASE(_drawnVerticesLabel);
     CC_SAFE_RELEASE(_drawnBatchesLabel);

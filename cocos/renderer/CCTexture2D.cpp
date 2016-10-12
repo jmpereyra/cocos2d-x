@@ -48,6 +48,8 @@ THE SOFTWARE.
 #include "renderer/CCGLProgramCache.h"
 #include "base/CCNinePatchImageParser.h"
 
+#include "renderer/KRTextureDebug.h"
+
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "renderer/CCTextureCache.h"
 #endif
@@ -465,6 +467,8 @@ Texture2D::~Texture2D()
     {
         GL::deleteTexture(_name);
     }
+    
+    KRTextureDebug::getInstance().unregisterTexture(this);
 }
 
 void Texture2D::releaseGLTexture()
@@ -709,6 +713,9 @@ bool Texture2D::initWithMipmaps(MipmapInfo* mipmaps, int mipmapsNum, PixelFormat
 
     // shader
     setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE));
+    
+    KRTextureDebug::getInstance().registerTexture(this);
+
     return true;
 }
 

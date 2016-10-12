@@ -172,6 +172,7 @@ THE SOFTWARE.
 #include "renderer/CCFrameBuffer.h"
 #include "renderer/ccGLStateCache.h"
 #include "renderer/ccShaders.h"
+#include "renderer/KRTextureDebug.h"
 
 // physics
 #include "physics/CCPhysicsBody.h"

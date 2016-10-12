@@ -41,7 +41,7 @@ THE SOFTWARE.
 #include "base/ccUtils.h"
 #include "base/CCNinePatchImageParser.h"
 
-
+#include "renderer/KRTextureDebug.h"
 
 using namespace std;
 
@@ -406,6 +406,8 @@ Texture2D * TextureCache::addImage(const std::string &path)
             }
         } while (0);
     }
+
+    KRTextureDebug::getInstance().mapTexture(texture, path);
 
     CC_SAFE_RELEASE(image);
 
