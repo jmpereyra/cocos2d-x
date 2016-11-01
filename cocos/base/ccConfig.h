@@ -402,7 +402,7 @@ THE SOFTWARE.
  * by its alpha component.
  */
 #ifndef CC_ENABLE_PREMULTIPLIED_ALPHA
-# define CC_ENABLE_PREMULTIPLIED_ALPHA 0
+# define CC_ENABLE_PREMULTIPLIED_ALPHA 1
 #endif
 
 #endif // __CCCONFIG_H__
