@@ -842,6 +842,11 @@ public:
      */
     bool isLayoutComponentEnabled()const;
 
+    /**
+     * Add extra hit area.
+     *@param extra hit area size.
+     */
+    void addExtraHitArea(Vec2 extraArea);
 CC_CONSTRUCTOR_ACCESS:
 
     //initializes state of widget.
@@ -938,6 +943,7 @@ protected:
     bool _highlight;
     bool _affectByClipping;
     bool _ignoreSize;
+    Vec2 _extraHitArea;
     bool _propagateTouchEvents;
 
     BrightStyle _brightStyle;

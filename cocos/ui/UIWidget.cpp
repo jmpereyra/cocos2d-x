@@ -168,7 +168,8 @@ _touchEventListener(nullptr),
 _touchEventSelector(nullptr),
 _ccEventCallback(nullptr),
 _callbackType(""),
-_callbackName("")
+_callbackName(""),
+_extraHitArea(Vec2::ZERO)
 {
 
 }
@@ -956,7 +957,11 @@ void Widget::addCCSEventListener(const ccWidgetEventCallback &callback)
 bool Widget::hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const
 {
     Rect rect;
-    rect.size = getContentSize();
+    
+    rect.size = Size( getContentSize().width + this->_extraHitArea.x,  getContentSize().height + this->_extraHitArea.y);
+    rect.origin.x = rect.origin.x - (this->_extraHitArea.x/2);
+    rect.origin.y = rect.origin.y - (this->_extraHitArea.y/2);
+    
     return isScreenPointInRect(pt, camera, getWorldToNodeTransform(), rect, p);
 }
 
@@ -1517,7 +1522,10 @@ bool Widget::isLayoutComponentEnabled()const
     return _usingLayoutComponent;
 }
 
-
+void Widget::addExtraHitArea(Vec2 extraArea)
+{
+    this->_extraHitArea = extraArea;
+}
 
 }
 NS_CC_END
