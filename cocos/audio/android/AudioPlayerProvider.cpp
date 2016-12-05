@@ -82,7 +82,7 @@ AudioPlayerProvider::AudioPlayerProvider(SLEngineItf engineItf, SLObjectItf outp
           _deviceSampleRate(deviceSampleRate), _bufferSizeInFrames(bufferSizeInFrames),
           _fdGetterCallback(fdGetterCallback), _callerThreadUtils(callerThreadUtils),
           _pcmAudioService(nullptr), _mixController(nullptr),
-          _threadPool(ThreadPool::newCachedThreadPool(1, 8, 5, 2, 2))
+          _threadPool(ThreadPool::newSingleThreadPool())
 {
     ALOGI("deviceSampleRate: %d, bufferSizeInFrames: %d", _deviceSampleRate, _bufferSizeInFrames);
     if (getSystemAPILevel() >= 17)
