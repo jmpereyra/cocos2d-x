@@ -230,13 +230,6 @@ public:
     bool getMagneticAllowedOutOfBoundary() const;
     
     /**
-     * Set if the first item has margin.
-     *
-     * @param boolean.
-     */
-    void setFirstItemsMargin(bool hasMargin);
-    
-    /**
      * Set the margin between each item in ListView.
      *
      * @param margin A margin in float.
@@ -448,7 +441,6 @@ protected:
     bool _magneticAllowedOutOfBoundary;
     
     float _itemsMargin;
-    bool _firstItemMargin;
     
     float _scrollTime;
     
