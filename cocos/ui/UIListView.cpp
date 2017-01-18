@@ -39,6 +39,7 @@ _gravity(Gravity::CENTER_VERTICAL),
 _magneticType(MagneticType::NONE),
 _magneticAllowedOutOfBoundary(true),
 _itemsMargin(0.0f),
+_firstItemMargin(false),
 _scrollTime(DEFAULT_TIME_IN_SEC_FOR_SCROLL_TO_ITEM),
 _curSelectedIndex(-1),
 _innerContainerDoLayoutDirty(true),
@@ -162,11 +163,12 @@ void ListView::remedyVerticalLayoutParameter(LinearLayoutParameter* layoutParame
     
     if (0 == itemIndex)
     {
-        layoutParameter->setMargin(Margin::ZERO);
+        if (this->_firstItemMargin) layoutParameter->setMargin(Margin(0.0f, _itemsMargin, 0.0f, 0.0f));
+        else layoutParameter->setMargin(Margin::ZERO);
     }
     else
     {
-        layoutParameter->setMargin(Margin(0.0f, _itemsMargin, 0.0f, 0.0f));
+        
     }
 }
     
@@ -190,7 +192,8 @@ void ListView::remedyHorizontalLayoutParameter(LinearLayoutParameter* layoutPara
     }
     if (0 == itemIndex)
     {
-        layoutParameter->setMargin(Margin::ZERO);
+        if (this->_firstItemMargin) layoutParameter->setMargin(Margin(_itemsMargin, 0.0f, 0.0f, 0.0f));
+        else layoutParameter->setMargin(Margin::ZERO);
     }
     else
     {
@@ -433,6 +436,16 @@ void ListView::setItemsMargin(float margin)
         return;
     }
     _itemsMargin = margin;
+    requestDoLayout();
+}
+    
+void ListView::setFirstItemsMargin(bool hasMargin)
+{
+    if (_firstItemMargin == hasMargin)
+    {
+        return;
+    }
+    _firstItemMargin = hasMargin;
     requestDoLayout();
 }
     
