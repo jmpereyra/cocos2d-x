@@ -541,6 +541,12 @@ public:
      * @return LayoutType
      */
     virtual Type getLayoutType() const override;
+    
+    
+    void setOutOfBoundaryFactor(float factor);
+
+    
+    float getOutOfBoundaryFactor() const;
 
     /**
      * Return the "class name" of widget.
@@ -661,6 +667,7 @@ protected:
     
     Vec2 _outOfBoundaryAmount;
     bool _outOfBoundaryAmountDirty;
+    float _outOfBoundaryFactor;
     
     bool _scrollBarEnabled;
     ScrollViewBar* _verticalScrollBar;

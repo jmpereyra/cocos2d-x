@@ -70,6 +70,7 @@ _inertiaScrollEnabled(true),
 _bounceEnabled(false),
 _outOfBoundaryAmount(Vec2::ZERO),
 _outOfBoundaryAmountDirty(true),
+_outOfBoundaryFactor(OUT_OF_BOUNDARY_BREAKING_FACTOR),
 _scrollBarEnabled(true),
 _verticalScrollBar(nullptr),
 _horizontalScrollBar(nullptr),
@@ -528,7 +529,7 @@ bool ScrollView::fltEqualZero(const Vec2& point) const
 void ScrollView::processAutoScrolling(float deltaTime)
 {
     // Make auto scroll shorter if it needs to deaccelerate.
-    float brakingFactor = (isNecessaryAutoScrollBrake() ? OUT_OF_BOUNDARY_BREAKING_FACTOR : 1);
+    float brakingFactor = (isNecessaryAutoScrollBrake() ? _outOfBoundaryFactor : 1);
     
     // Elapsed time
     _autoScrollAccumulatedTime += deltaTime * (1 / brakingFactor);
@@ -1366,6 +1367,16 @@ void ScrollView::setLayoutType(Type type)
 Layout::Type ScrollView::getLayoutType() const
 {
     return _innerContainer->getLayoutType();
+}
+    
+void ScrollView::setOutOfBoundaryFactor(float factor)
+{
+    _outOfBoundaryFactor = factor;
+}
+
+float ScrollView::getOutOfBoundaryFactor() const
+{
+    return _outOfBoundaryFactor;
 }
 
 void ScrollView::doLayout()
