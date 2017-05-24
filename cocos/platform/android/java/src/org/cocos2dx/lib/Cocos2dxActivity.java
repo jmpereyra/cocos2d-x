@@ -26,6 +26,7 @@ package org.cocos2dx.lib;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import com.sdkbox.plugin.SDKBox;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
@@ -262,7 +263,8 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         this.hideVirtualButton();
 
         onLoadNativeLibraries();
-
+		SDKBox.init(this);
+		
         sContext = this;
         this.mHandler = new Cocos2dxHandler(this);
         
@@ -300,10 +302,22 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
+	@Override
+	protected void onStart() {
+	    super.onStart();
+	    SDKBox.onStart();
+	}
+	@Override
+    protected void onStop() {
+          super.onStop();
+          SDKBox.onStop();
+    }
+
     @Override
     protected void onResume() {
     	Log.d(TAG, "onResume()");
         super.onResume();
+		SDKBox.onResume();
         this.hideVirtualButton();
        	resumeIfHasFocus();
     }
@@ -329,10 +343,18 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     protected void onPause() {
     	Log.d(TAG, "onPause()");
         super.onPause();
+		SDKBox.onPause();
         Cocos2dxHelper.onPause();
         mGLSurfaceView.onPause();
     }
     
+	@Override
+	public void onBackPressed() {
+		if(!SDKBox.onBackPressed()) {
+			super.onBackPressed();
+		}
+	}
+	
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -358,7 +380,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
             listener.onActivityResult(requestCode, resultCode, data);
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+		if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
+			super.onActivityResult(requestCode, resultCode, data);
+		}
     }
 
 
