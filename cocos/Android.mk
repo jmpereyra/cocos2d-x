@@ -219,6 +219,7 @@ navmesh/CCNavMeshObstacle.cpp \
 navmesh/CCNavMeshUtils.cpp \
 ../external/ConvertUTF/ConvertUTFWrapper.cpp \
 ../external/ConvertUTF/ConvertUTF.c \
+../external/md5/md5.c \
 ../external/tinyxml2/tinyxml2.cpp \
 ../external/unzip/ioapi_mem.cpp \
 ../external/unzip/ioapi.cpp \
@@ -272,6 +273,7 @@ LOCAL_STATIC_LIBRARIES += cocos_tiff_static
 LOCAL_STATIC_LIBRARIES += cocos_webp_static
 LOCAL_STATIC_LIBRARIES += cocos_chipmunk_static
 LOCAL_STATIC_LIBRARIES += cocos_zlib_static
+LOCAL_STATIC_LIBRARIES += cocos_ssl_static
 LOCAL_STATIC_LIBRARIES += recast_static
 LOCAL_STATIC_LIBRARIES += bullet_static
 
@@ -331,4 +333,5 @@ $(call import-module,bullet)
 $(call import-module,recast)
 # $(call import-module,curl/prebuilt/android)
 $(call import-module,websockets/prebuilt/android)
+$(call import-module,openssl/prebuilt/android)
 $(call import-module,flatbuffers)
