@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/com.android.vending.expansion.zipfile.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3785cbb057b995cb42463158b1a798fcc78bb3b0">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/8/com.android.vending.expansion.zipfile_402f76c06a0844a88d83fcbb2dfd4381c7ebbfb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/android-async-http-1.4.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="769f000c2940ab43578cd56ffcc81340aad0b182">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/8/android-async-http-1.4.9_b855c845d64a9ed5c0835a257c19212d1c702cda/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b3d773814af136c12424afb5faf649f3185ea2d4/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/com.android.vending.expansion.zipfile.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3785cbb057b995cb42463158b1a798fcc78bb3b0">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/com.android.vending.expansion.zipfile_402f76c06a0844a88d83fcbb2dfd4381c7ebbfb7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="769f000c2940ab43578cd56ffcc81340aad0b182">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9_b855c845d64a9ed5c0835a257c19212d1c702cda.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/PluginSdkboxAds.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="13d7a35bc2cde058f706f56058c9927ebc9c34b4">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/8/PluginSdkboxAds_71246bcf3ac9a39c5756b9997779a87824612d5e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="46bc88acf7fc00bad580f44fb372168152e2c796">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_348a8c79bbbdb6bd759d6e6004628a50ad85c9a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/PluginSdkboxAds.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="13d7a35bc2cde058f706f56058c9927ebc9c34b4">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/PluginSdkboxAds_71246bcf3ac9a39c5756b9997779a87824612d5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/sdkbox.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="465205353e8035b6ae020fa1bfba0cf0a292118a">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/sdkbox_3ab9d35f5f7d79119afa7f862db2028958e5b960.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/sdkbox.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="465205353e8035b6ae020fa1bfba0cf0a292118a">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/8/sdkbox_3ab9d35f5f7d79119afa7f862db2028958e5b960/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/httpclient-4.4.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="becf40a1a480be2a5ccb46529dce490f31b516d5">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/8/httpclient-4.4.1.1_e37ebd08ec8cd2fedbc24eb7ab789b5aacbe29ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/libs/httpclient-4.4.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="becf40a1a480be2a5ccb46529dce490f31b516d5">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/httpclient-4.4.1.1_e37ebd08ec8cd2fedbc24eb7ab789b5aacbe29ec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nin/github/kingdomrush-x/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e6bd105dff0345e0b875c76cb0282ae8510eb657">
+        <dex dex="/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/pre-dexed/debug/classes_16882c3e984e5d2dffdaee2e11e3e852bd2132b7.jar" />
+    </item>
+
+</items>

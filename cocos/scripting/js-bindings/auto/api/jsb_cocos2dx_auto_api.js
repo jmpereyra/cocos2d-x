@@ -2211,6 +2211,16 @@ create : function (
 },
 
 /**
+ * @method getAttachedNodeCount
+ * @return {int}
+ */
+getAttachedNodeCount : function (
+)
+{
+    return 0;
+},
+
+/**
  * @method Node
  * @constructor
  */
@@ -2398,6 +2408,16 @@ setIMEKeyboardState : function (
 bool 
 )
 {
+},
+
+/**
+ * @method getSafeAreaRect
+ * @return {rect_object}
+ */
+getSafeAreaRect : function (
+)
+{
+    return cc.Rect;
 },
 
 /**
@@ -2762,6 +2782,16 @@ float
 },
 
 /**
+ * @method getDeltaTime
+ * @return {float}
+ */
+getDeltaTime : function (
+)
+{
+    return 0;
+},
+
+/**
  * @method getContentScaleFactor
  * @return {float}
  */
@@ -2782,13 +2812,13 @@ getWinSizeInPixels : function (
 },
 
 /**
- * @method getDeltaTime
- * @return {float}
+ * @method getSafeAreaRect
+ * @return {rect_object}
  */
-getDeltaTime : function (
+getSafeAreaRect : function (
 )
 {
-    return 0;
+    return cc.Rect;
 },
 
 /**
@@ -8086,6 +8116,23 @@ EventListenerMouse : function (
 };
 
 /**
+ * @class EventListenerController
+ */
+cc.EventListenerController = {
+
+/**
+ * @method create
+ * @return {cc.EventListenerController}
+ */
+create : function (
+)
+{
+    return cc.EventListenerController;
+},
+
+};
+
+/**
  * @class EventListenerTouchOneByOne
  */
 cc.EventListenerTouchOneByOne = {
@@ -8151,6 +8198,88 @@ init : function (
  * @constructor
  */
 EventListenerTouchAllAtOnce : function (
+)
+{
+},
+
+};
+
+/**
+ * @class EventController
+ */
+cc.EventController = {
+
+/**
+ * @method getControllerEventType
+ * @return {cc.EventController::ControllerEventType}
+ */
+getControllerEventType : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method setConnectStatus
+ * @param {bool} arg0
+ */
+setConnectStatus : function (
+bool 
+)
+{
+},
+
+/**
+ * @method isConnected
+ * @return {bool}
+ */
+isConnected : function (
+)
+{
+    return false;
+},
+
+/**
+ * @method setKeyCode
+ * @param {int} arg0
+ */
+setKeyCode : function (
+int 
+)
+{
+},
+
+/**
+ * @method getController
+ * @return {cc.Controller}
+ */
+getController : function (
+)
+{
+    return cc.Controller;
+},
+
+/**
+ * @method getKeyCode
+ * @return {int}
+ */
+getKeyCode : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method EventController
+ * @constructor
+* @param {cc.EventController::ControllerEventType|cc.EventController::ControllerEventType} controllereventtype
+* @param {cc.Controller|cc.Controller} controller
+* @param {bool|int} bool
+*/
+EventController : function(
+controllereventtype,
+controller,
+int 
 )
 {
 },
@@ -10729,13 +10858,13 @@ node
 },
 
 /**
- * @method update
- * @param {float} arg0
+ * @method getNumberOfRunningActions
+ * @return {int}
  */
-update : function (
-float 
+getNumberOfRunningActions : function (
 )
 {
+    return 0;
 },
 
 /**
@@ -10798,6 +10927,16 @@ pauseAllRunningActions : function (
 )
 {
     return new Array();
+},
+
+/**
+ * @method update
+ * @param {float} arg0
+ */
+update : function (
+float 
+)
+{
 },
 
 /**
@@ -14246,10 +14385,12 @@ layer
 
 /**
  * @method switchTo
- * @param {int} arg0
- */
-switchTo : function (
-int 
+* @param {int|int} int
+* @param {bool} bool
+*/
+switchTo : function(
+int,
+bool 
 )
 {
 },
@@ -15523,6 +15664,16 @@ float
 },
 
 /**
+ * @method setSourcePositionCompatible
+ * @param {bool} arg0
+ */
+setSourcePositionCompatible : function (
+bool 
+)
+{
+},
+
+/**
  * @method getStartSpinVar
  * @return {float}
  */
@@ -16413,6 +16564,16 @@ isAutoRemoveOnFinish : function (
 },
 
 /**
+ * @method isSourcePositionCompatible
+ * @return {bool}
+ */
+isSourcePositionCompatible : function (
+)
+{
+    return false;
+},
+
+/**
  * @method getTotalParticles
  * @return {int}
  */
@@ -16484,6 +16645,16 @@ int
 )
 {
     return cc.ParticleSystem;
+},
+
+/**
+ * @method getAllParticleSystems
+ * @return {Array}
+ */
+getAllParticleSystems : function (
+)
+{
+    return new Array();
 },
 
 /**

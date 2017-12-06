@@ -1,0 +1,7 @@
+#Tue May 30 09:48:48 ART 2017
+base.0=/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b3d773814af136c12424afb5faf649f3185ea2d4
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_348a8c79bbbdb6bd759d6e6004628a50ad85c9a4/classes.dex
+base.1=/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_348a8c79bbbdb6bd759d6e6004628a50ad85c9a4
+file.0=/Users/nin/github/kingdomrush-x/cocos2d/tests/cpp-tests/proj.android-studio/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b3d773814af136c12424afb5faf649f3185ea2d4/classes.dex

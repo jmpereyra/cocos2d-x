@@ -129,7 +129,7 @@ public:
         return _rootArray;
     }
 
-    void startElement(void *ctx, const char *name, const char **atts)
+    void startElement(void *ctx, const char *name, const char **atts) override
     {
         const std::string sName(name);
         if( sName == "dict" )
@@ -218,7 +218,7 @@ public:
         }
     }
 
-    void endElement(void *ctx, const char *name)
+    void endElement(void *ctx, const char *name) override
     {
         SAXState curState = _stateStack.empty() ? SAX_DICT : _stateStack.top();
         const std::string sName((char*)name);
@@ -997,15 +997,7 @@ void FileUtils::addSearchPath(const std::string &searchpath,const bool front)
         _searchPathArray.insert(_searchPathArray.begin(), path);
     } else {
         _originalSearchPaths.push_back(searchpath);
-
-        if (!_searchPathArray.empty() && _searchPathArray[_searchPathArray.size()-1] == _defaultResRootPath)
-        {
-            _searchPathArray.insert(_searchPathArray.begin() + _searchPathArray.size() -1, path);
-        }
-        else
-        {
-            _searchPathArray.push_back(path);
-        }
+        _searchPathArray.push_back(path);
     }
 }
 

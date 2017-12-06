@@ -23,79 +23,65 @@ function build_mac()
 {
     NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
 
-    if [ $BUILD_CPP == 'true' ]; then
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "cpp-empty-test Mac" -jobs $NUM_OF_CORES -arch x86_64 -sdk macosx10.11  build
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "cpp-tests Mac" -jobs $NUM_OF_CORES -arch x86_64 -sdk macosx10.11  build
-    else
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "lua-tests Mac" -jobs $NUM_OF_CORES -arch x86_64 -sdk macosx10.11  build
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "js-tests Mac" -jobs $NUM_OF_CORES -arch x86_64 -sdk macosx10.11  build
-    fi
+    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests Mac" -jobs $NUM_OF_CORES -arch x86_64 build | xcpretty
+    ##xcpretty has a bug, some xcodebuid fails return value would be treated as 0.
+    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests Mac" -jobs $NUM_OF_CORES -arch x86_64 build
 }
 
 function build_ios()
 {
     NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
 
-    if [ $BUILD_CPP == 'true' ]; then
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "cpp-empty-test iOS" -jobs $NUM_OF_CORES -arch i386 -sdk iphonesimulator9.3  build
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "cpp-tests iOS" -jobs $NUM_OF_CORES -arch i386 -sdk iphonesimulator9.3  build
-    else
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "lua-tests iOS" -jobs $NUM_OF_CORES -arch i386 -sdk iphonesimulator9.3  build
-        xctool -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "js-tests iOS" -jobs $NUM_OF_CORES -arch i386 -sdk iphonesimulator9.3  build
-    fi
+    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests iOS" -jobs $NUM_OF_CORES  -destination "platform=iOS Simulator,name=iPhone Retina (4-inch)" build | xcpretty
+    #the following commands must not be removed
+    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests iOS" -jobs $NUM_OF_CORES  -destination "platform=iOS Simulator,name=iPhone Retina (4-inch)" build
 }
 
 function build_android()
 {
+
+    #replace NDK to r16
+    # the NDK is used to generate binding codes, should use r16 when fix binding codes with r16
+    cd $HOME/bin
+    curl -O https://dl.google.com/android/repository/android-ndk-r16-linux-x86_64.zip
+    unzip ./android-ndk-r16-linux-x86_64.zip > /dev/null
+    rm -rf ./android-ndk
+    mv android-ndk-r16 android-ndk
+
     # Build all samples
     echo "Building Android samples ..."
     export COCOS_CONSOLE_ROOT=$COCOS2DX_ROOT/tools/cocos2d-console/bin
-    export ANT_ROOT=/usr/bin
     export ANDROID_SDK_ROOT=/usr/local/android-sdk
     export COCOS_X_ROOT=$COCOS2DX_ROOT
-    export PATH=$ANT_ROOT:$ANDROID_SDK_ROOT:$COCOS_CONSOLE_ROOT:$PATH
-
-    cd $COCOS2DX_ROOT/build
-
-    # share the obj folder to speed up building
+    export PATH=$ANDROID_SDK_ROOT:$COCOS_CONSOLE_ROOT:$PATH
 
     # build cpp-empty-test
-    pushd $COCOS2DX_ROOT/tests/cpp-empty-test
-    cocos compile -p android
-    popd
+    # pushd $COCOS2DX_ROOT/tests/cpp-empty-test
+    # cocos compile -p android --android-studio
+    # popd
 
     # build cpp-tests
-    src_dir=$COCOS2DX_ROOT/tests/cpp-empty-test/proj.android/obj/
-    dst_dir=$COCOS2DX_ROOT/tests/cpp-tests/proj.android/obj/
-    mkdir $dst_dir
-    cp -a $src_dir/* $dst_dir
     pushd $COCOS2DX_ROOT/tests/cpp-tests
     cocos compile -p android
     popd
 
     # build lua-tests
-    src_dir=$dst_dir
-    dst_dir=$COCOS2DX_ROOT/tests/lua-tests/project/proj.android/obj/
-    mkdir $dst_dir
-    cp -a $src_dir/* $dst_dir
     pushd $COCOS2DX_ROOT/tests/lua-tests
     cocos compile -p android
     popd
 
     # build js-tests
-    src_dir=$dst_dir
-    dst_dir=$COCOS2DX_ROOT/tests/js-tests/project/proj.android/obj/
-    mkdir $dst_dir
-    cp -a $src_dir/* $dst_dir
-    pushd $COCOS2DX_ROOT/tests/js-tests
-    cocos compile -p android
-    popd
+    # should uncomon it when building time not exceed time limit
+    # pushd $COCOS2DX_ROOT/tests/js-tests
+    # cocos compile -p android
+    # popd
 }
 
 function genernate_binding_codes()
 {
     # set environment variables needed by binding codes
 
+    which python
 
     export NDK_ROOT=$HOME/bin/android-ndk
     export PYTHON_BIN=/usr/bin/python

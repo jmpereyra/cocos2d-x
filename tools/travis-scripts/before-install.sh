@@ -21,6 +21,7 @@ function install_android_ndk()
 
     FILE_NAME=android-ndk-r10d-${HOST_NAME}-x86_64.bin
 
+    # the NDK is used to generate binding codes, should use r16 when fix binding codes with r16
     echo "Download ${FILE_NAME} ..."
     curl -O http://dl.google.com/android/ndk/${FILE_NAME}
     sudo chmod +x ./$FILE_NAME
@@ -63,7 +64,7 @@ function install_linux_environment()
     echo "which ld: `which ld`"
     sudo rm /usr/bin/ld
     popd
-    bash $COCOS2DX_ROOT/build/install-deps-linux.sh
+    echo -e "y" | bash $COCOS2DX_ROOT/build/install-deps-linux.sh
 }
 
 function download_deps()
@@ -87,8 +88,8 @@ function install_android_environment()
 function install_python_module_for_osx()
 {
     sudo easy_install pip
-    sudo pip install PyYAML
-    sudo pip install Cheetah
+    sudo -H pip install PyYAML
+    sudo -H pip install Cheetah
 }
 
 # set up environment according os and target
