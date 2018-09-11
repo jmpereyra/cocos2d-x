@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2013-2017 Chukong Technologies Inc.
+ Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -73,6 +74,7 @@ NS_CC_BEGIN
 extern const char* cocos2dVersion(void);
 
 #define PROMPT  "> "
+#define DEFAULT_COMMAND_SEPARATOR '|'
 
 static const size_t SEND_BUFSIZ = 512;
 
@@ -215,17 +217,22 @@ std::string Console::Utility::_prompt(PROMPT);
 //TODO: these general utils should be in a separate class
 //
 // Trimming functions were taken from: http://stackoverflow.com/a/217605
-//
+// Since c++17, some parts of the standard library were removed, include "ptr_fun".
+
 // trim from start
 
 std::string& Console::Utility::ltrim(std::string& s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
+        return !std::isspace(ch);
+    }));
     return s;
 }
 
 // trim from end
 std::string& Console::Utility::rtrim(std::string& s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
+        return !std::isspace(ch);
+    }).base(), s.end());
     return s;
 }
 
@@ -478,7 +485,8 @@ void Console::Command::commandGeneric(int fd, const std::string& args)
 //
 
 Console::Console()
-: _listenfd(-1)
+: _commandSeparator(DEFAULT_COMMAND_SEPARATOR)
+, _listenfd(-1)
 , _running(false)
 , _endThread(false)
 , _isIpv6Server(false)
@@ -530,7 +538,11 @@ bool Console::listenOnTCP(int port)
 #endif
 
     if ( (n = getaddrinfo(nullptr, serv, &hints, &res)) != 0) {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+        fprintf(stderr, "net_listen error for %s: %s", serv, gai_strerrorA(n));
+#else
         fprintf(stderr,"net_listen error for %s: %s", serv, gai_strerror(n));
+#endif
         return false;
     }
 
@@ -932,17 +944,26 @@ bool Console::parseCommand(int fd)
         }
     }
     std::string cmdLine;
-    
-    std::vector<std::string> args;
     cmdLine = std::string(buf);
+    auto commands = Console::Utility::split(cmdLine, _commandSeparator);
+    try {
+        for(auto command : commands) {
+            performCommand(fd, Console::Utility::trim(command));
+        }
+    } catch (const std::runtime_error& e) {
+        Console::Utility::sendToConsole(fd, e.what(), strlen(e.what()));
+    }
     
-    args = Console::Utility::split(cmdLine, ' ');
-    if(args.empty())
-    {
-        const char err[] = "Unknown command. Type 'help' for options\n";
-        Console::Utility::sendToConsole(fd, err, strlen(err));
-        Console::Utility::sendPrompt(fd);
-        return true;
+    
+    Console::Utility::sendPrompt(fd);
+    
+    return true;
+}
+
+void Console::performCommand(int fd, const std::string& command) {
+    std::vector<std::string> args = Console::Utility::split(command, ' ');
+    if(args.empty()) {
+        throw std::runtime_error("Unknown command. Type 'help' for options\n");
     }
     
     auto it = _commands.find(Console::Utility::trim(args[0]));
@@ -960,13 +981,9 @@ bool Console::parseCommand(int fd)
         }
         auto cmd = it->second;
         cmd->commandGeneric(fd, args2);
-    }else if(strcmp(buf, "\r\n") != 0) {
-        const char err[] = "Unknown command. Type 'help' for options\n";
-        Console::Utility::sendToConsole(fd, err, strlen(err));
+    } else {
+        throw std::runtime_error("Unknown command " + command + ". Type 'help' for options\n");
     }
-    Console::Utility::sendPrompt(fd);
-    
-    return true;
 }
 
 void Console::addClient()

@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2013-2017 Chukong Technologies Inc.
+ Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -208,6 +209,9 @@ public:
 
     /** Checks whether the server for console is bound with ipv6 address */
     bool isIpv6Server() const;
+    
+    /** The command separator */
+    CC_SYNTHESIZE(char, _commandSeparator, CommandSeparator);
 
 protected:
     // Main Loop
@@ -217,6 +221,7 @@ protected:
     ssize_t readline(int fd, char *buf, size_t maxlen);
     ssize_t readBytes(int fd, char* buffer, size_t maxlen, bool* more);
     bool parseCommand(int fd);
+    void performCommand(int fd, const std::string& command);
     
     void addClient();
     

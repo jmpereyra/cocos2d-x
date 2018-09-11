@@ -1,5 +1,6 @@
 /****************************************************************************
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -446,6 +447,9 @@ void TextField::setFontSize(int size)
     {
         _textFieldRenderer->setSystemFontSize(size);
     }
+    else if (_fontType == FontType::BMFONT) {
+        _textFieldRenderer->setBMFontSize(size);
+    }
     else
     {
         TTFConfig config = _textFieldRenderer->getTTFConfig();
@@ -466,11 +470,19 @@ void TextField::setFontName(const std::string& name)
 {
     if(FileUtils::getInstance()->isFileExist(name))
     {
-        TTFConfig config = _textFieldRenderer->getTTFConfig();
-        config.fontFilePath = name;
-        config.fontSize = _fontSize;
-        _textFieldRenderer->setTTFConfig(config);
-        _fontType = FontType::TTF;
+        std::string lcName = name;
+        std::transform(lcName.begin(), lcName.end(), lcName.begin(), ::tolower);
+        if(lcName.substr(lcName.length() - 4) == ".fnt") {
+            _textFieldRenderer->setBMFontFilePath(name);
+            _fontType = FontType::BMFONT;
+        }
+        else {
+            TTFConfig config = _textFieldRenderer->getTTFConfig();
+            config.fontFilePath = name;
+            config.fontSize = _fontSize;
+            _textFieldRenderer->setTTFConfig(config);
+            _fontType = FontType::TTF;
+        }
     }
     else
     {
