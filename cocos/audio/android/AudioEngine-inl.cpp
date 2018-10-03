@@ -93,7 +93,7 @@ static CallerThreadUtils __callerThreadUtils;
 static int fdGetter(const std::string& url, off_t* start, off_t* length)
 {
     int fd = -1;
-    if (cocos2d::FileUtilsAndroid::getObbFile() != nullptr)
+    if (url.find("KR4_Android") == std::string::npos && cocos2d::FileUtilsAndroid::getObbFile() != nullptr)
     {
         fd = getObbAssetFileDescriptorJNI(url.c_str(), start, length);
     } 

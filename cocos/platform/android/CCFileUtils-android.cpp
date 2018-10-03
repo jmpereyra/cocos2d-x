@@ -301,7 +301,7 @@ FileUtils::Status FileUtilsAndroid::getContents(const std::string& filename, Res
     } else {
         relativePath = fullPath;
     }
-    
+
     if (obbfile)
     {
         if (obbfile->getFileData(relativePath, buffer))
