@@ -28,7 +28,6 @@ import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
-import com.sdkbox.plugin.SDKBox;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
@@ -141,7 +140,6 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         this.hideVirtualButton();
 
         onLoadNativeLibraries();
-		SDKBox.init(this);
 		
         sContext = this;
         this.mHandler = new Cocos2dxHandler(this);
@@ -186,12 +184,10 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	@Override
 	protected void onStart() {
 	    super.onStart();
-	    SDKBox.onStart();
 	}
 	@Override
     protected void onStop() {
           super.onStop();
-          SDKBox.onStop();
     }
 
     @Override
@@ -199,7 +195,6 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     	Log.d(TAG, "onResume()");
         paused = false;
         super.onResume();
-		SDKBox.onResume();
         if(gainAudioFocus)
             Cocos2dxAudioFocusManager.registerAudioFocusListener(this);
         this.hideVirtualButton();
@@ -234,20 +229,12 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     	Log.d(TAG, "onPause()");
         paused = true;
         super.onPause();
-        SDKBox.onPause();
         if(gainAudioFocus)
             Cocos2dxAudioFocusManager.unregisterAudioFocusListener(this);
         Cocos2dxHelper.onPause();
         mGLSurfaceView.onPause();
         Cocos2dxEngineDataManager.pause();
     }
-    
-	@Override
-	public void onBackPressed() {
-		if(!SDKBox.onBackPressed()) {
-			super.onBackPressed();
-		}
-	}
 	
     @Override
     protected void onDestroy() {
@@ -277,10 +264,6 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         for (OnActivityResultListener listener : Cocos2dxHelper.getOnActivityResultListeners()) {
             listener.onActivityResult(requestCode, resultCode, data);
         }
-
-		if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
-			super.onActivityResult(requestCode, resultCode, data);
-		}
     }
 
 
