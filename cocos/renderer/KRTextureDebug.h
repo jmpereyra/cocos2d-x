@@ -9,7 +9,11 @@
 #ifndef __kingdomrush_x__KRTextureDebug__
 #define __kingdomrush_x__KRTextureDebug__
 
+#include <string>
+#include <map>
+
 #include "base/CCRef.h"
+#include "platform/CCGL.h"
 
 NS_CC_BEGIN
 
