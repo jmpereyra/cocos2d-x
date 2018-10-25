@@ -6,12 +6,15 @@
 //
 //
 
+#include "renderer/KRTextureDebug.h"
 
-#include "../../Classes/Support/KRUtils.h"
-#include "../../Classes/Support/KRMacros.h"
+#include "base/ccMacros.h"
+#include "platform/CCPlatformMacros.h"
+#include "renderer/CCTexture2D.h"
 
-#include "KRTextureDebug.h"
+#include <sstream>
 
+NS_CC_BEGIN
 
 KRTextureDebug::KRTextureDebug() {
     
@@ -31,12 +34,47 @@ KRTextureDebug::~KRTextureDebug()
     
 }
 
+std::string vec_join( std::vector<std::string>& elements, const std::string& delimiter )
+{
+    std::stringstream ss;
+    size_t elems = elements.size(),
+    last = elems - 1;
+    
+    for( size_t i = 0; i < elems; ++i )
+    {
+        ss << elements[i];
+        
+        if( i != last )
+            ss << delimiter;
+    }
+    
+    return ss.str();
+}
+
+std::string vec_join( std::vector<GLuint>& elements, const std::string& delimiter )
+{
+    std::stringstream ss;
+    size_t elems = elements.size(),
+    last = elems - 1;
+    
+    for( size_t i = 0; i < elems; ++i )
+    {
+        ss << elements[i];
+        
+        if( i != last )
+            ss << delimiter;
+    }
+    
+    return ss.str();
+}
+
+
 bool sortTextureData(const TextureDebugData &lhs, const TextureDebugData &rhs)
 {
     return KRTextureDebug::sortTextureDebugData(lhs, rhs);
 }
 
-void KRTextureDebug::registerTexture(Texture2D *texture)
+void KRTextureDebug::registerTexture(cocos2d::Texture2D *texture)
 {
     GLuint textureId = texture->getName();
     auto it = this->textureInfo.find(textureId);
@@ -57,7 +95,7 @@ void KRTextureDebug::registerTexture(Texture2D *texture)
     this->textureInfo[textureId] = *textureData;
 }
 
-void KRTextureDebug::unregisterTexture(Texture2D *texture)
+void KRTextureDebug::unregisterTexture(cocos2d::Texture2D *texture)
 {
     GLuint textureId = texture->getName();
     if(this->textureInfo.find(textureId) == this->textureInfo.end())
@@ -69,7 +107,7 @@ void KRTextureDebug::unregisterTexture(Texture2D *texture)
     this->textureInfo.erase(textureId);
 }
 
-void KRTextureDebug::mapTexture(Texture2D *texture, string path)
+void KRTextureDebug::mapTexture(cocos2d::Texture2D *texture, std::string path)
 {
     GLuint textureId = texture->getName();
     if(this->textureInfo.find(textureId) == this->textureInfo.end()){
@@ -79,13 +117,13 @@ void KRTextureDebug::mapTexture(Texture2D *texture, string path)
     this->textureInfo[textureId].path = path;
 }
 
-void KRTextureDebug::dumpMemoryInfo()
+std::string KRTextureDebug::dumpMemoryInfo()
 {
     //CCLOG("%s",Director::getInstance()->getTextureCache()->getCachedTextureInfo().c_str());
     
     bool foundDuplicates = false;
     CCLOG("TEXTUREDEBUG: Dumping Texture Memory Info");
-    vector<TextureDebugData> sortedDatas;
+    std::vector<TextureDebugData> sortedDatas;
     for(auto iterator = this->textureInfo.begin(); iterator != this->textureInfo.end(); iterator++){
         TextureDebugData data = iterator->second;
         sortedDatas.push_back(data);
@@ -93,7 +131,7 @@ void KRTextureDebug::dumpMemoryInfo()
     
     sort(sortedDatas.begin(), sortedDatas.end(), sortTextureData);
     
-    vector<vector<TextureDebugData>> buckets;
+    std::vector<std::vector<TextureDebugData>> buckets;
     TextureDebugData lastCompared;
     
     for (unsigned i=0; i<sortedDatas.size(); i++)
@@ -102,7 +140,7 @@ void KRTextureDebug::dumpMemoryInfo()
         
         if(!(data.equal(lastCompared)))
         {
-            vector<TextureDebugData> currentBucket;
+            std::vector<TextureDebugData> currentBucket;
             buckets.push_back(currentBucket);
         }
         buckets[buckets.size()-1].push_back(data);
@@ -111,8 +149,8 @@ void KRTextureDebug::dumpMemoryInfo()
     
     float total = 0;
     
-    vector<string> allDuplicates;
-    vector<TextureDebugData> bucket;
+    std::vector<std::string> allDuplicates;
+    std::vector<TextureDebugData> bucket;
     
     for (unsigned i=0; i<buckets.size(); i++)
     {
@@ -122,16 +160,16 @@ void KRTextureDebug::dumpMemoryInfo()
         
         float size = fistData.size();
         
-        vector<GLuint> ids;
-        vector<string> paths;
-        vector<string> duplicates;
+        std::vector<GLuint> ids;
+        std::vector<std::string> paths;
+        std::vector<std::string> duplicates;
 
         for (unsigned z=0; z<bucket.size(); z++)
         {
             TextureDebugData data = bucket[z];
             ids.push_back(data.textureId);
             
-            string path = data.path;
+            std::string path = data.path;
             if (!path.empty() && (find(paths.begin(), paths.end(), path) != paths.end())) {
                 foundDuplicates = true;
                 duplicates.push_back(path);
@@ -156,14 +194,11 @@ void KRTextureDebug::dumpMemoryInfo()
     
     if(foundDuplicates)
     {
-                string allDuplicatesString = KRUtils::join(allDuplicates, "\n");
+                std::string allDuplicatesString = vec_join(allDuplicates, "\n");
                 CCLOG("TEXTUREDEBUG: ERROR - Found duplicate textures [%s]", allDuplicatesString.c_str());
-        
-        #ifdef KRDEBUG
-                Director::getInstance()->getNotificationNode()->addChild(KRUtils::createBasicTextToast(allDuplicatesString, 5));
-        #endif
-        
+                return allDuplicatesString;
     }
+    return "";
 }
 
 void KRTextureDebug::printMemoryInfo(TextureDebugData texData, std::vector<TextureDebugData> bucket)
@@ -176,7 +211,7 @@ void KRTextureDebug::printMemoryInfo(TextureDebugData texData, std::vector<Textu
 void KRTextureDebug::printExtendedMemoryInfo(TextureDebugData texData, std::vector<TextureDebugData> bucket, std::vector<GLuint> ids, std::vector<std::string> paths, std::vector<std::string> duplicates)
 {
     
-    CCLOG("TEXTUREDEBUG: Texture - cant:%lu - width:%i - height:%i - format:%s - individualSize:%f - bucketSize:%f - ids:[%s] - paths:[%s] - duplicates:[%s]", bucket.size(), texData.width, texData.height, KRTextureDebug::getPixelFormatName(texData.format).c_str(), texData.size(), texData.size() * bucket.size(),KRUtils::join(ids, ",").c_str(), KRUtils::join(paths, ",").c_str(), KRUtils::join(duplicates, ",").c_str());
+    CCLOG("TEXTUREDEBUG: Texture - cant:%lu - width:%i - height:%i - format:%s - individualSize:%f - bucketSize:%f - ids:[%s] - paths:[%s] - duplicates:[%s]", bucket.size(), texData.width, texData.height, KRTextureDebug::getPixelFormatName(texData.format).c_str(), texData.size(), texData.size() * bucket.size(),vec_join(ids, ",").c_str(), vec_join(paths, ",").c_str(), vec_join(duplicates, ",").c_str());
 }
 
 bool KRTextureDebug::sortTextureDebugData(const TextureDebugData &lhs, const TextureDebugData &rhs)
@@ -211,7 +246,7 @@ bool KRTextureDebug::sortTextureDebugData(const TextureDebugData &lhs, const Tex
     return false;
 }
 
-string KRTextureDebug::getPixelFormatName(int format)
+std::string KRTextureDebug::getPixelFormatName(int format)
 {
     
     switch (format) {
@@ -263,3 +298,5 @@ string KRTextureDebug::getPixelFormatName(int format)
             return "UNKNOWN";
     }
 };
+
+NS_CC_END

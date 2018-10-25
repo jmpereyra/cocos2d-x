@@ -9,11 +9,11 @@
 #ifndef __kingdomrush_x__KRTextureDebug__
 #define __kingdomrush_x__KRTextureDebug__
 
-#include <cocos2d.h>
+#include "base/CCRef.h"
 
-USING_NS_CC;
+NS_CC_BEGIN
 
-using namespace std;
+class Texture2D;
 
 struct TextureDebugData {
     GLuint textureId;
@@ -21,7 +21,7 @@ struct TextureDebugData {
     int height;
     int format;
     int bitsPerPixel;
-    string path;
+    std::string path;
     
     float size ()
     {
@@ -58,12 +58,12 @@ public:
     
     void registerTexture(Texture2D *texture);
     void unregisterTexture(Texture2D *texture);
-    void mapTexture(Texture2D *texture, string path);
-    void dumpMemoryInfo();
+    void mapTexture(Texture2D *texture, std::string path);
+    std::string dumpMemoryInfo();
     static bool sortTextureDebugData(const TextureDebugData &lhs, const TextureDebugData &rhs);
-    static string getPixelFormatName(int format);
+    static std::string getPixelFormatName(int format);
     
-    map<int, TextureDebugData>  textureInfo;
+    std::map<int, TextureDebugData>  textureInfo;
 private:
     KRTextureDebug();
     KRTextureDebug(KRTextureDebug const&) = delete;
@@ -72,5 +72,7 @@ private:
     void printMemoryInfo(TextureDebugData texData, std::vector<TextureDebugData> bucket);
     void printExtendedMemoryInfo(TextureDebugData texData, std::vector<TextureDebugData> bucket, std::vector<GLuint> ids, std::vector<std::string> paths, std::vector<std::string> duplicates);
 };
+
+NS_CC_END
 
 #endif /* defined(__kingdomrush_x__KRTextureDebug__) */
