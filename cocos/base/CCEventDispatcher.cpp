@@ -40,6 +40,8 @@
 #include "base/CCEventType.h"
 #include "2d/CCCamera.h"
 
+#include "base/KKDebugTouch.h"
+
 #define DUMP_LISTENER_ITEM_PRIORITY_INFO 0
 
 namespace
@@ -821,6 +823,9 @@ void EventDispatcher::dispatchTouchEventToListeners(EventListenerVector* listene
                 if (l->isEnabled() && !l->isPaused() && l->isRegistered() && onEvent(l))
                 {
                     shouldStopPropagation = true;
+                    // DEBUG CCC
+                    KKDebugTouch::getInstance()->setLastStopper(l);
+                    // DEBUG CCC
                     break;
                 }
             }
@@ -953,6 +958,10 @@ bool EventDispatcher::hasEventListener(const EventListener::ListenerID& listener
 
 void EventDispatcher::dispatchTouchEvent(EventTouch* event)
 {
+    // DEBUG CCC
+    KKDebugTouch::getInstance()->clearLastStopper();
+    // DEBUG CCC
+
     sortEventListeners(EventListenerTouchOneByOne::LISTENER_ID);
     sortEventListeners(EventListenerTouchAllAtOnce::LISTENER_ID);
     
@@ -1001,6 +1010,11 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                         isClaimed = listener->onTouchBegan(touches, event);
                         if (isClaimed && listener->_isRegistered)
                         {
+                            // DEBUG CCC
+                            CCLOG("Listener %x claimed touch %x ID %i",
+                                  listener, touches, touches->getID());
+                            // DEBUG CC
+                            //touches->retain();
                             listener->_claimedTouches.push_back(touches);
                         }
                     }
@@ -1025,6 +1039,11 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                             }
                             if (listener->_isRegistered)
                             {
+                                // DEBUG CCC
+                                CCLOG("Listener %x erases claimed touch %x ID %i ENDED",
+                                      listener, touches, touches->getID());
+                                // DEBUG CC
+                                //touches->release();
                                 listener->_claimedTouches.erase(removedIter);
                             }
                             break;
@@ -1035,6 +1054,11 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                             }
                             if (listener->_isRegistered)
                             {
+                                // DEBUG CCC
+                                CCLOG("Listener %x erases claimed touch %x ID %i CANCELLED",
+                                      listener, touches, touches->getID());
+                                // DEBUG CC
+                                //touches->release();
                                 listener->_claimedTouches.erase(removedIter);
                             }
                             break;
@@ -1058,6 +1082,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                 {
                     if (isNeedsMutableSet)
                     {
+                        KKDebugTouch::getInstance()->setLastSwallower(listener, *mutableTouchesIter);
                         mutableTouchesIter = mutableTouches.erase(mutableTouchesIter);
                         isSwallowed = true;
                     }
@@ -1071,6 +1096,9 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
             dispatchTouchEventToListeners(oneByOneListeners, onTouchEvent);
             if (event->isStopped())
             {
+                // DEBUG CCC
+                KKDebugTouch::getInstance()->procEvent(1,event);
+                // DEBUG CCC
                 return;
             }
             
@@ -1137,9 +1165,16 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
         dispatchTouchEventToListeners(allAtOnceListeners, onTouchesEvent);
         if (event->isStopped())
         {
+            // DEBUG CCC
+            KKDebugTouch::getInstance()->procEvent(1,event);
+            // DEBUG CCC            
             return;
         }
     }
+
+    // DEBUG CCC
+    KKDebugTouch::getInstance()->procEvent(1,event);
+    // DEBUG CCC
     
     updateListeners(event);
 }

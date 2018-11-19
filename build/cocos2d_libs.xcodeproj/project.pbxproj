@@ -1200,26 +1200,6 @@
 		382060901DAED7B30090FF3B /* KRTextureDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3820608E1DAED7B30090FF3B /* KRTextureDebug.h */; };
 		382060911DAED7B70090FF3B /* KRTextureDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3820608E1DAED7B30090FF3B /* KRTextureDebug.h */; };
 		382060921DAED7BF0090FF3B /* KRTextureDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3820608D1DAED7B30090FF3B /* KRTextureDebug.cpp */; };
-		382383EE1A258FA7002C4610 /* flatbuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383E41A258FA7002C4610 /* flatbuffers.h */; };
-		382383EF1A258FA7002C4610 /* flatbuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383E41A258FA7002C4610 /* flatbuffers.h */; };
-		382383F01A258FA7002C4610 /* flatc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E51A258FA7002C4610 /* flatc.cpp */; };
-		382383F11A258FA7002C4610 /* flatc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E51A258FA7002C4610 /* flatc.cpp */; };
-		382383F21A258FA7002C4610 /* idl.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383E61A258FA7002C4610 /* idl.h */; };
-		382383F31A258FA7002C4610 /* idl.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383E61A258FA7002C4610 /* idl.h */; };
-		382383F41A258FA7002C4610 /* idl_gen_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E71A258FA7002C4610 /* idl_gen_cpp.cpp */; };
-		382383F51A258FA7002C4610 /* idl_gen_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E71A258FA7002C4610 /* idl_gen_cpp.cpp */; };
-		382383F61A258FA7002C4610 /* idl_gen_fbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E81A258FA7002C4610 /* idl_gen_fbs.cpp */; };
-		382383F71A258FA7002C4610 /* idl_gen_fbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E81A258FA7002C4610 /* idl_gen_fbs.cpp */; };
-		382383F81A258FA7002C4610 /* idl_gen_general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E91A258FA7002C4610 /* idl_gen_general.cpp */; };
-		382383F91A258FA7002C4610 /* idl_gen_general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383E91A258FA7002C4610 /* idl_gen_general.cpp */; };
-		382383FA1A258FA7002C4610 /* idl_gen_go.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EA1A258FA7002C4610 /* idl_gen_go.cpp */; };
-		382383FB1A258FA7002C4610 /* idl_gen_go.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EA1A258FA7002C4610 /* idl_gen_go.cpp */; };
-		382383FC1A258FA7002C4610 /* idl_gen_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EB1A258FA7002C4610 /* idl_gen_text.cpp */; };
-		382383FD1A258FA7002C4610 /* idl_gen_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EB1A258FA7002C4610 /* idl_gen_text.cpp */; };
-		382383FE1A258FA7002C4610 /* idl_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EC1A258FA7002C4610 /* idl_parser.cpp */; };
-		382383FF1A258FA7002C4610 /* idl_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382383EC1A258FA7002C4610 /* idl_parser.cpp */; };
-		382384001A258FA7002C4610 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383ED1A258FA7002C4610 /* util.h */; };
-		382384011A258FA7002C4610 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 382383ED1A258FA7002C4610 /* util.h */; };
 		382384031A259005002C4610 /* CSParseBinary_generated.h in Headers */ = {isa = PBXBuildFile; fileRef = 382384021A259005002C4610 /* CSParseBinary_generated.h */; };
 		382384041A259005002C4610 /* CSParseBinary_generated.h in Headers */ = {isa = PBXBuildFile; fileRef = 382384021A259005002C4610 /* CSParseBinary_generated.h */; };
 		382384071A25900F002C4610 /* FlatBuffersSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382384051A25900F002C4610 /* FlatBuffersSerialize.cpp */; };
@@ -1306,6 +1286,8 @@
 		3EACC9A519F5014D00EB3C5E /* CCLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EACC99E19F5014D00EB3C5E /* CCLight.cpp */; };
 		3EACC9A619F5014D00EB3C5E /* CCLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EACC99F19F5014D00EB3C5E /* CCLight.h */; };
 		3EACC9A719F5014D00EB3C5E /* CCLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EACC99F19F5014D00EB3C5E /* CCLight.h */; };
+		40F70CD5219CC23500F31FF1 /* KKDebugTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40F70CD3219CC23400F31FF1 /* KKDebugTouch.cpp */; };
+		40F70CD6219CC23500F31FF1 /* KKDebugTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 40F70CD4219CC23500F31FF1 /* KKDebugTouch.h */; };
 		43015DBF1B60DF4000E75161 /* CCComExtensionData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43015DBD1B60DF4000E75161 /* CCComExtensionData.cpp */; };
 		43015DC01B60DF4000E75161 /* CCComExtensionData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43015DBD1B60DF4000E75161 /* CCComExtensionData.cpp */; };
 		43015DC11B60DF4000E75161 /* CCComExtensionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 43015DBE1B60DF4000E75161 /* CCComExtensionData.h */; };
@@ -5019,30 +5001,8 @@
 		29E99D1C1957BA7000046604 /* CocoLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CocoLoader.cpp; sourceTree = "<group>"; };
 		29E99D1D1957BA7000046604 /* CocoLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoLoader.h; sourceTree = "<group>"; };
 		373B910718787C0B00198F86 /* CCComBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCComBase.h; sourceTree = "<group>"; };
-		37936A341869B76800E974DD /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
-		37936A351869B76800E974DD /* filestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filestream.h; sourceTree = "<group>"; };
-		37936A371869B76800E974DD /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
-		37936A381869B76800E974DD /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
-		37936A391869B76800E974DD /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
-		37936A3A1869B76800E974DD /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
-		37936A3B1869B76800E974DD /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
-		37936A3C1869B76800E974DD /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
-		37936A3D1869B76800E974DD /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
-		37936A3E1869B76800E974DD /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		3820608D1DAED7B30090FF3B /* KRTextureDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KRTextureDebug.cpp; sourceTree = "<group>"; };
 		3820608E1DAED7B30090FF3B /* KRTextureDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRTextureDebug.h; sourceTree = "<group>"; };
-		382383E21A258FA7002C4610 /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
-		382383E31A258FA7002C4610 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		382383E41A258FA7002C4610 /* flatbuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flatbuffers.h; sourceTree = "<group>"; };
-		382383E51A258FA7002C4610 /* flatc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flatc.cpp; sourceTree = "<group>"; };
-		382383E61A258FA7002C4610 /* idl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idl.h; sourceTree = "<group>"; };
-		382383E71A258FA7002C4610 /* idl_gen_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_gen_cpp.cpp; sourceTree = "<group>"; };
-		382383E81A258FA7002C4610 /* idl_gen_fbs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_gen_fbs.cpp; sourceTree = "<group>"; };
-		382383E91A258FA7002C4610 /* idl_gen_general.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_gen_general.cpp; sourceTree = "<group>"; };
-		382383EA1A258FA7002C4610 /* idl_gen_go.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_gen_go.cpp; sourceTree = "<group>"; };
-		382383EB1A258FA7002C4610 /* idl_gen_text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_gen_text.cpp; sourceTree = "<group>"; };
-		382383EC1A258FA7002C4610 /* idl_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_parser.cpp; sourceTree = "<group>"; };
-		382383ED1A258FA7002C4610 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		382384021A259005002C4610 /* CSParseBinary_generated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSParseBinary_generated.h; sourceTree = "<group>"; };
 		382384051A25900F002C4610 /* FlatBuffersSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlatBuffersSerialize.cpp; sourceTree = "<group>"; };
 		382384061A25900F002C4610 /* FlatBuffersSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatBuffersSerialize.h; sourceTree = "<group>"; };
@@ -5092,6 +5052,8 @@
 		3EACC99D19F5014D00EB3C5E /* CCCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCamera.h; sourceTree = "<group>"; };
 		3EACC99E19F5014D00EB3C5E /* CCLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLight.cpp; sourceTree = "<group>"; };
 		3EACC99F19F5014D00EB3C5E /* CCLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLight.h; sourceTree = "<group>"; };
+		40F70CD3219CC23400F31FF1 /* KKDebugTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KKDebugTouch.cpp; path = ../base/KKDebugTouch.cpp; sourceTree = "<group>"; };
+		40F70CD4219CC23500F31FF1 /* KKDebugTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKDebugTouch.h; path = ../base/KKDebugTouch.h; sourceTree = "<group>"; };
 		43015DBD1B60DF4000E75161 /* CCComExtensionData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCComExtensionData.cpp; sourceTree = "<group>"; };
 		43015DBE1B60DF4000E75161 /* CCComExtensionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCComExtensionData.h; sourceTree = "<group>"; };
 		46270FA21E1CC6A100AAA098 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../external/openssl/prebuilt/mac/libcrypto.a; sourceTree = "<group>"; };
@@ -6504,6 +6466,8 @@
 		1A5700A2180BC5E60088DEC7 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				40F70CD3219CC23400F31FF1 /* KKDebugTouch.cpp */,
+				40F70CD4219CC23500F31FF1 /* KKDebugTouch.h */,
 				291901411B05895600F8B4BA /* CCNinePatchImageParser.h */,
 				291901421B05895600F8B4BA /* CCNinePatchImageParser.cpp */,
 				505385001B01887A00793096 /* CCProperties.h */,
@@ -11350,9 +11314,6 @@
 				50ABBE3C1925AB6F00A911A9 /* CCData.h in Headers */,
 				503DD8FA1926B0DB00CD74DD /* CCIMEDispatcher.h in Headers */,
 				382060911DAED7B70090FF3B /* KRTextureDebug.h in Headers */,
-				B6CAB3921AF9AA1A00B9B856 /* btRaycastCallback.h in Headers */,
-				B6CAB3721AF9AA1A00B9B856 /* btGjkConvexCast.h in Headers */,
-				B6CAB4FA1AF9AA1A00B9B856 /* btAlignedObjectArray.h in Headers */,
 				B665E3591AA80A6500DDB1C5 /* CCPUOnQuotaObserverTranslator.h in Headers */,
 				50ABBEC81925AB6F00A911A9 /* etc1.h in Headers */,
 				50ABBDB01925AB4100A911A9 /* CCRenderer.h in Headers */,
@@ -11544,6 +11505,7 @@
 				50864CD41C7BC1B100B3BAB1 /* cpSimpleMotor.h in Headers */,
 				5020A17E1D49912500E80C72 /* AttachmentVertices.h in Headers */,
 				15AE1B8B19AADA9A00C27E9E /* UIImageView.h in Headers */,
+				40F70CD6219CC23500F31FF1 /* KKDebugTouch.h in Headers */,
 				B665E2291AA80A6500DDB1C5 /* CCPUBillboardChain.h in Headers */,
 				50ABBE601925AB6F00A911A9 /* CCEventListener.h in Headers */,
 				4D76BE3D1A4AAF0A00102962 /* CCActionTimelineNode.h in Headers */,
@@ -13126,8 +13088,7 @@
 				50ABBE761925AB6F00A911A9 /* CCEventListenerTouch.cpp in Sources */,
 				B6DD2FEE1B04825B00E47F5F /* DetourTileCache.cpp in Sources */,
 				382060921DAED7BF0090FF3B /* KRTextureDebug.cpp in Sources */,
-				B6CAB2B41AF9AA1A00B9B856 /* btConvexShape.cpp in Sources */,
-				15AE1A4919AAD3D500C27E9E /* b2CircleShape.cpp in Sources */,
+				40F70CD5219CC23500F31FF1 /* KKDebugTouch.cpp in Sources */,
 				15AE184119AAD2F700C27E9E /* CCSprite3D.cpp in Sources */,
 				50ABBE5A1925AB6F00A911A9 /* CCEventKeyboard.cpp in Sources */,
 				15AE193A19AAD35100C27E9E /* CCArmatureDataManager.cpp in Sources */,
