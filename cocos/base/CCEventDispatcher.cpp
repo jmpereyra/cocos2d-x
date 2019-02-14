@@ -1001,6 +1001,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                         isClaimed = listener->onTouchBegan(touches, event);
                         if (isClaimed && listener->_isRegistered)
                         {
+                            touches->retain();
                             listener->_claimedTouches.push_back(touches);
                         }
                     }
@@ -1025,6 +1026,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                             }
                             if (listener->_isRegistered)
                             {
+                                touches->release();
                                 listener->_claimedTouches.erase(removedIter);
                             }
                             break;
@@ -1035,6 +1037,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
                             }
                             if (listener->_isRegistered)
                             {
+                                touches->release();
                                 listener->_claimedTouches.erase(removedIter);
                             }
                             break;
