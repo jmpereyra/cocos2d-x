@@ -102,14 +102,26 @@ public:
     virtual void setDefaultIcon() const override;
 #endif /* CC_ICON_SET_SUPPORT */
 
-    /*
-     * Set zoom factor for frame. This method is for debugging big resolution (e.g.new ipad) app on desktop.
+
+    virtual void setCursor(const std::string& filename, Vec2 hotspot = Vec2::ANCHOR_TOP_LEFT) override;
+    
+    /**
+     * Sets the cursor for the window back to default.
      */
-    void setFrameZoomFactor(float zoomFactor) override;
+    virtual void setDefaultCursor() override;
+
+    
     /**
      * Hide or Show the mouse cursor if there is one.
      */
     virtual void setCursorVisible(bool isVisible) override;
+    
+    
+    /*
+     * Set zoom factor for frame. This method is for debugging big resolution (e.g.new ipad) app on desktop.
+     */
+    void setFrameZoomFactor(float zoomFactor) override;
+    
     /** Retina support is disabled by default
      *  @note This method is only available on Mac.
      */
@@ -169,6 +181,8 @@ protected:
     float _mouseX;
     float _mouseY;
 
+    GLFWcursor* _cursor;
+    
     friend class GLFWEventHandler;
     
 public:
