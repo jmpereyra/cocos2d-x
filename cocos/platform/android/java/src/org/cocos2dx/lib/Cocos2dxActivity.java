@@ -124,7 +124,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         this.hideVirtualButton();
 
         onLoadNativeLibraries();
-		SDKBox.init(this);
+		//SDKBox.init(this);
 		
         sContext = this;
         this.mHandler = new Cocos2dxHandler(this);
@@ -169,19 +169,19 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	@Override
 	protected void onStart() {
 	    super.onStart();
-	    SDKBox.onStart();
+	    //SDKBox.onStart();
 	}
 	@Override
     protected void onStop() {
           super.onStop();
-          SDKBox.onStop();
+         // SDKBox.onStop();
     }
 
     @Override
     protected void onResume() {
     	Log.d(TAG, "onResume()");
         super.onResume();
-		SDKBox.onResume();
+		//SDKBox.onResume();
         Cocos2dxAudioFocusManager.registerAudioFocusListener(this);
         this.hideVirtualButton();
        	resumeIfHasFocus();
@@ -210,19 +210,19 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     protected void onPause() {
     	Log.d(TAG, "onPause()");
         super.onPause();
-		SDKBox.onPause();
+		//SDKBox.onPause();
         Cocos2dxAudioFocusManager.unregisterAudioFocusListener(this);
         Cocos2dxHelper.onPause();
         mGLSurfaceView.onPause();
         Cocos2dxEngineDataManager.pause();
     }
     
-	@Override
-	public void onBackPressed() {
-		if(!SDKBox.onBackPressed()) {
-			super.onBackPressed();
-		}
-	}
+//	@Override
+//	public void onBackPressed() {
+//		if(!SDKBox.onBackPressed()) {
+//			super.onBackPressed();
+//		}
+//	}
 	
     @Override
     protected void onDestroy() {
@@ -252,9 +252,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
             listener.onActivityResult(requestCode, resultCode, data);
         }
 
-		if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
+		//if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
 			super.onActivityResult(requestCode, resultCode, data);
-		}
+		//}
     }
 
 
