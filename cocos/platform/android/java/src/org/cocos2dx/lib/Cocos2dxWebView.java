@@ -32,6 +32,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.os.Build;
+import android.view.View;
 
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -80,6 +82,13 @@ public class Cocos2dxWebView extends WebView {
 
         this.getSettings().setDomStorageEnabled(true);
         this.getSettings().setJavaScriptEnabled(true);
+
+        if (Build.VERSION.SDK_INT >= 19) {
+            this.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        }       
+        else {
+            this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
 
         // `searchBoxJavaBridge_` has big security risk. http://jvn.jp/en/jp/JVN53768697
         try {
