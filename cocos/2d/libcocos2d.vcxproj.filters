@@ -1998,6 +1998,9 @@
     <ClCompile Include="..\base\CCEventController.cpp" />
     <ClCompile Include="..\base\CCEventListenerController.cpp" />
     <ClCompile Include="..\precheader.cpp" />
+    <ClCompile Include="..\renderer\KRTextureDebug.cpp">
+      <Filter>renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\physics\CCPhysicsBody.h">
@@ -3907,6 +3910,9 @@
     <ClInclude Include="..\base\CCEventController.h" />
     <ClInclude Include="..\base\CCEventListenerController.h" />
     <ClInclude Include="..\precheader.h" />
+    <ClInclude Include="..\renderer\KRTextureDebug.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\math\Mat4.inl">
