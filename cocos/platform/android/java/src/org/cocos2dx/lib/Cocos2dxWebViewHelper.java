@@ -134,12 +134,12 @@ public class Cocos2dxWebViewHelper {
                     Cocos2dxWebView webView = webViews.get(index);
                     if (webView != null) {
                         webView.setBackgroundColor(Color.TRANSPARENT);
-                        try {
-                            Method method = webView.getClass().getMethod("setLayerType",int.class,Paint.class);
-                            method.invoke(webView,WebView.LAYER_TYPE_SOFTWARE,null);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            Method method = webView.getClass().getMethod("setLayerType",int.class,Paint.class);
+//                            method.invoke(webView,WebView.LAYER_TYPE_SOFTWARE,null);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
                     }
                 }
             });
