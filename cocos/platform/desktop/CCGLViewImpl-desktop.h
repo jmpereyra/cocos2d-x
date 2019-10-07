@@ -102,6 +102,7 @@ public:
     virtual void setDefaultIcon() const override;
 #endif /* CC_ICON_SET_SUPPORT */
 
+    virtual void setCursorImage(GLFWcursor* cursor) override;
 
     virtual void setCursor(const std::string& filename, Vec2 hotspot = Vec2::ANCHOR_TOP_LEFT) override;
     

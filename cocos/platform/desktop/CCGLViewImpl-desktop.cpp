@@ -505,6 +505,10 @@ void GLViewImpl::setDefaultIcon() const {
 }
 #endif /* CC_ICON_SET_SUPPORT */
 
+void GLViewImpl::setCursorImage(GLFWcursor* cursor) {
+    glfwSetCursor(_mainWindow, cursor);
+}
+
 void GLViewImpl::setCursor(const std::string& filename, Vec2 hotspot) {
     
     if (_cursor) {

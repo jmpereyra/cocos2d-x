@@ -30,6 +30,8 @@ THE SOFTWARE.
 #include "base/ccTypes.h"
 #include "base/CCEventTouch.h"
 
+#include "glfw3.h"
+
 #include <vector>
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -194,6 +196,8 @@ public:
      * @return The zoom factor for frame.
      */
     virtual float getFrameZoomFactor() const { return 1.0; }
+    
+    virtual void setCursorImage(GLFWcursor* cursor) {}
     
     /**
      * Sets the cursor for the window with custom image.
