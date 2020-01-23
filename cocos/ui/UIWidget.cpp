@@ -929,7 +929,9 @@ void Widget::addCCSEventListener(const ccWidgetEventCallback &callback)
 bool Widget::hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const
 {
     Rect rect;
-    rect.size = getContentSize();
+    rect.size = Size( getContentSize().width + _extraHitArea.x,  getContentSize().height + _extraHitArea.y);
+    rect.origin.x = rect.origin.x - (_extraHitArea.x/2);
+    rect.origin.y = rect.origin.y - (_extraHitArea.y/2);
     return isScreenPointInRect(pt, camera, getWorldToNodeTransform(), rect, p);
 }
 
@@ -1468,6 +1470,10 @@ bool Widget::isLayoutComponentEnabled()const
     return _usingLayoutComponent;
 }
 
+void Widget::addExtraHitArea(Vec2 extraArea)
+{
+    _extraHitArea = extraArea;
+}
 
 
 }

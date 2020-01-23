@@ -717,6 +717,12 @@ public:
      */
     bool isLayoutComponentEnabled()const;
 
+    /**
+     * Add extra hit area.
+     *@param extra hit area size.
+     */
+    void addExtraHitArea(Vec2 extraArea);
+
 CC_CONSTRUCTOR_ACCESS:
     
     friend class PageView;
@@ -801,6 +807,8 @@ protected:
     bool _affectByClipping;
     bool _ignoreSize;
     bool _propagateTouchEvents;
+
+    Vec2 _extraHitArea;
 
     BrightStyle _brightStyle;
     SizeType _sizeType;
