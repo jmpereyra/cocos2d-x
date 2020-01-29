@@ -431,6 +431,15 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
         std::string imagename = attributeDict["source"].asString();
         tileset->_originSourceImage = imagename;
 
+        int gid = tmxMapInfo->getParentGID();
+        auto slashPos = imagename.find_last_of("/");
+
+        if (slashPos != std::string::npos)
+        {
+            std::string spriteFilename = imagename.substr(slashPos + 1);
+            tmxMapInfo->getTileProperties()[gid].asValueMap()["sprite_frame"] = Value(spriteFilename);
+        }
+
         if (_TMXFileName.find_last_of('/') != string::npos)
         {
             string dir = _TMXFileName.substr(0, _TMXFileName.find_last_of('/') + 1);
