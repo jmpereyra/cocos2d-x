@@ -476,7 +476,7 @@ backend::PixelFormat getDevicePixelFormat(backend::PixelFormat format)
 //////////////////////////////////////////////////////////////////////////
 // Implement Image
 //////////////////////////////////////////////////////////////////////////
-bool Image::PNG_PREMULTIPLIED_ALPHA_ENABLED = true;
+bool Image::PNG_PREMULTIPLIED_ALPHA_ENABLED = false;
 
 Image::Image()
 : _data(nullptr)
