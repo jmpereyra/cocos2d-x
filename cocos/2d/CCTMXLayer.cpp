@@ -105,10 +105,18 @@ bool TMXLayer::initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *la
                 width = _mapTileSize.width * (_layerSize.width + 0.5);
                 height = (_mapTileSize.height + _hexSideLength) * ((int)(_layerSize.height / 2)) + _mapTileSize.height * ((int)_layerSize.height % 2);
             }
-        } else {
+		} else if (_layerOrientation == TMXOrientationIso) {
+			float factorIso = std::abs(_layerSize.width - _layerSize.height) / 2;
+			factorIso += std::min(_layerSize.width, _layerSize.height);
+
+			width = _mapTileSize.width * factorIso;
+			height = _mapTileSize.height * factorIso;
+        
+		} else {
             width = _layerSize.width * _mapTileSize.width;
             height = _layerSize.height * _mapTileSize.height;
         }
+
         this->setContentSize(CC_SIZE_PIXELS_TO_POINTS(Size(width, height)));
 
         _useAutomaticVertexZ = false;
