@@ -110,6 +110,17 @@ LanguageType Application::getCurrentLanguage()
     // get the current language code.(such as English is "en", Chinese is "zh" and so on)
     NSDictionary* temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
     NSString * languageCode = [temp objectForKey:NSLocaleLanguageCode];
+    
+    if ([languageCode isEqualToString:@"zh"])
+    {
+        NSString* scriptCode = [temp objectForKey:NSLocaleScriptCode];
+
+        if ([scriptCode isEqualToString:@"Hant"]) {
+            return LanguageType::CHINESE_TW;
+        } else {
+            return LanguageType::CHINESE_SW;
+        }
+    }
 
     return utils::getLanguageTypeByISO2([languageCode UTF8String]);
 

@@ -115,6 +115,16 @@ LanguageType Application::getCurrentLanguage()
 {
     const char* code = getCurrentLanguageCode();
 
+    if (0 == strcmp("zh", code))
+    {
+        std::string languageName = JniHelper::callStaticStringMethod(helperClassName, "getCurrentLanguage");
+        if (languageName.find("Hant") != std::string::npos) {
+            return LanguageType::CHINESE_TW;
+        } else {
+            return LanguageType::CHINESE_SW;
+        }
+    }
+
     return utils::getLanguageTypeByISO2(code);
 }
 
