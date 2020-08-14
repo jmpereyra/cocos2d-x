@@ -53,7 +53,7 @@ struct TextureDebugData {
     }
 };
 
-class KRTextureDebug : public Ref
+class CC_DLL KRTextureDebug : public Ref
 {
 public:
     // constructor

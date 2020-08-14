@@ -3913,6 +3913,9 @@
     <ClInclude Include="..\renderer\KRTextureDebug.h">
       <Filter>renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\platform\CCStdC.h">
+      <Filter>platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\math\Mat4.inl">

@@ -2023,6 +2023,9 @@
     <ClCompile Include="..\..\..\external\flatbuffers\idl_parser.cpp">
       <Filter>external\flatbuffers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\renderer\KRTextureDebug.cpp">
+      <Filter>renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cocos2d.h" />
@@ -3926,9 +3929,6 @@
     <ClInclude Include="..\..\editor-support\cocostudio\WidgetCallBackHandlerProtocol.h">
       <Filter>cocostudio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\external\flatbuffers\code_generators.h">
-      <Filter>external\flatbuffers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\external\flatbuffers\flatbuffers.h">
       <Filter>external\flatbuffers</Filter>
     </ClInclude>
@@ -4045,6 +4045,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\external\json\msinttypes\stdint.h">
       <Filter>external\json\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\renderer\KRTextureDebug.h">
+      <Filter>renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
