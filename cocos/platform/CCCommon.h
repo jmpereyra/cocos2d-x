@@ -54,8 +54,6 @@ enum class LanguageType
 {
     ENGLISH = 0,
     CHINESE,
-    CHINESE_TW,
-    CHINESE_SW,
     FRENCH,
     ITALIAN,
     GERMAN,
@@ -73,7 +71,9 @@ enum class LanguageType
     UKRAINIAN,
     ROMANIAN,
     BULGARIAN,
-    BELARUSIAN
+    BELARUSIAN,
+    CHINESE_TW,
+    CHINESE_SW
 };
 
 // END of platform group
