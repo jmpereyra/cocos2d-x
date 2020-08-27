@@ -241,6 +241,10 @@ std::string FileUtilsApple::getWritablePath() const
     NSString *documentsDirectory = [paths objectAtIndex:0];
     std::string strRet = [documentsDirectory UTF8String];
     strRet.append("/");
+    // add executable name as suffix taken from info.plist
+    NSString* exe = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
+    strRet.append([exe cStringUsingEncoding:NSUTF8StringEncoding]);
+    strRet.append("/");
     return strRet;
 }
 
