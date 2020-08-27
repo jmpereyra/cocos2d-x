@@ -56,8 +56,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Platform)\$(Configuration)\libcocos2d\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\libcocos2d\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
@@ -99,27 +99,8 @@
       <ForcedIncludeFiles>precheader.h</ForcedIncludeFiles>
     </ClCompile>
     <PreLinkEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\freetype2\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\glfw3\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\curl\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\jpeg\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\png\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\tiff\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\webp\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\websockets\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\zlib\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\icon\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\gles\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\OpenalSoft\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\MP3Decoder\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\OggDecoder\prebuilt\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\sqlite3\libraries\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\bullet\prebuilt\win32\debug\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\Box2D\prebuilt\win32\debug\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\external\uv\prebuilt\win32\*.*" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
