@@ -3,8 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
     <EngineRoot>$(MSBuildThisFileDirectory)..\..\</EngineRoot>
-    <CocosExternalLibsPath>C:\dev\vcpkg\vcpkg-export-20200904-184401\installed\$(PlatformTarget)-windows-static</CocosExternalLibsPath>
-    <CocosExternalLibsPathDyn>C:\dev\vcpkg\vcpkg-export-20200904-184401\installed\$(PlatformTarget)-windows</CocosExternalLibsPathDyn>
+    <CocosExternalLibsPath>$(EngineRoot)\external\win32-vcpkg.$(PlatformTarget)\installed\$(PlatformTarget)-windows-static</CocosExternalLibsPath>
+    <CocosExternalLibsPathDyn>$(EngineRoot)\external\win32-vcpkg.$(PlatformTarget)\installed\$(PlatformTarget)-windows</CocosExternalLibsPathDyn>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup>
