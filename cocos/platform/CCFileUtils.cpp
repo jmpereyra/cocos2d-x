@@ -373,7 +373,7 @@ bool FileUtils::writeValueMapToFile(const ValueMap& dict, const std::string& ful
     }
 
     doc->LinkEndChild(declaration);
-    tinyxml2::XMLElement *docType = doc->NewElement("!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"");
+    tinyxml2::XMLUnknown *docType = doc->NewUnknown("DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"");
     doc->LinkEndChild(docType);
 
     tinyxml2::XMLElement *rootEle = doc->NewElement("plist");
@@ -413,7 +413,7 @@ bool FileUtils::writeValueVectorToFile(const ValueVector& vecData, const std::st
     }
 
     doc->LinkEndChild(declaration);
-    tinyxml2::XMLElement *docType = doc->NewElement("!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"");
+    tinyxml2::XMLUnknown *docType = doc->NewUnknown("DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"");
     doc->LinkEndChild(docType);
 
     tinyxml2::XMLElement *rootEle = doc->NewElement("plist");
