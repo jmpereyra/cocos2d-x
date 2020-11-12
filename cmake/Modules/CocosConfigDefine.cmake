@@ -122,6 +122,7 @@ endfunction()
     if(MSVC)
         target_compile_options(${target}
             PUBLIC /MP
+			PUBLIC /Z7
         )
     endif()
  endfunction()
