@@ -30,7 +30,11 @@ THE SOFTWARE.
 #include "base/ccTypes.h"
 #include "base/CCEventTouch.h"
 #ifdef CC_PLATFORM_PC
-#include "glfw3.h"
+  #ifdef WINRT
+    #include "glfw3/include/win32/glfw3.h"
+  #else
+    #include "glfw3.h"
+  #endif
 #endif
 #include <vector>
 

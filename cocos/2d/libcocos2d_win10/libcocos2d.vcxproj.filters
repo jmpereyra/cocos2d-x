@@ -2023,9 +2023,7 @@
     <ClCompile Include="..\..\..\external\flatbuffers\idl_parser.cpp">
       <Filter>external\flatbuffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\renderer\KRTextureDebug.cpp">
-      <Filter>renderer</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\renderer\ccGLStateCache.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cocos2d.h" />
@@ -4046,9 +4044,7 @@
     <ClInclude Include="..\..\..\external\json\msinttypes\stdint.h">
       <Filter>external\json\msinttypes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\renderer\KRTextureDebug.h">
-      <Filter>renderer</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\renderer\ccGLStateCache.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\base\CCController-iOS.mm">

@@ -52,10 +52,10 @@ public:
     virtual std::string getWritablePath() const;
     virtual bool isAbsolutePath(const std::string& strPath) const;
     virtual std::string getPathForFilename(const std::string& filename, const std::string& resolutionDirectory, const std::string& searchPath) const override;
-    virtual std::string getFullPathForDirectoryAndFilename(const std::string& strDirectory, const std::string& strFilename) const override;
+    virtual std::string getFullPathForFilenameWithinDirectory(const std::string& strDirectory, const std::string& strFilename) const override;
     virtual std::string getSuitableFOpen(const std::string& filenameUtf8) const override;
-    virtual long getFileSize(const std::string &filepath) override;
-	virtual FileUtils::Status getContents(const std::string& filename, ResizableBuffer* buffer) override;
+    virtual long getFileSize(const std::string &filepath) const override;
+	virtual FileUtils::Status getContents(const std::string& filename, ResizableBuffer* buffer) const override;
 	static std::string getAppPath();
 
     /**
@@ -85,7 +85,7 @@ private:
     *  @param name     The new name of the file.
     *  @return True if the file have been renamed successfully, false if not.
     */
-    virtual bool renameFile(const std::string &path, const std::string &oldname, const std::string &name) override;
+    virtual bool renameFile(const std::string &path, const std::string &oldname, const std::string &name) const override;
 
 
     /**
@@ -95,7 +95,7 @@ private:
     *  @param newfullpath  The new name of the file, including path and name
     *  @return True if the file have been renamed successfully, false if not.
     */
-    virtual bool renameFile(const std::string &oldfullpath, const std::string& newfullpath) override;
+    virtual bool renameFile(const std::string &oldfullpath, const std::string& newfullpath) const override;
 
     /**
     *  Checks whether a directory exists without considering search paths and resolution orders.
@@ -110,7 +110,7 @@ private:
     *  @param filepath The full path of the file, it must be an absolute path.
     *  @return True if the file have been removed successfully, false if not.
     */
-    virtual bool removeFile(const std::string &filepath) override;
+    virtual bool removeFile(const std::string &filepath) const override;
 
     /**
     *  Creates a directory.
@@ -118,7 +118,7 @@ private:
     *  @param dirPath The path of the directory, it must be an absolute path.
     *  @return True if the directory have been created successfully, false if not.
     */
-    virtual bool createDirectory(const std::string& dirPath) override;
+    virtual bool createDirectory(const std::string& dirPath) const override;
 
     /**
     *  Removes a directory.
@@ -126,7 +126,7 @@ private:
     *  @param dirPath  The full path of the directory, it must be an absolute path.
     *  @return True if the directory have been removed successfully, false if not.
     */
-    virtual bool removeDirectory(const std::string& dirPath) override;
+    virtual bool removeDirectory(const std::string& dirPath) const override;
 };
 
 // end of platform group

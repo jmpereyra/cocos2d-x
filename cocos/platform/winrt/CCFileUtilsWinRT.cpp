@@ -119,11 +119,11 @@ std::string CCFileUtilsWinRT::getPathForFilename(const std::string& filename, co
     return FileUtils::getPathForFilename(unixFileName, unixResolutionDirectory, unixSearchPath);
 }
 
-std::string CCFileUtilsWinRT::getFullPathForDirectoryAndFilename(const std::string& strDirectory, const std::string& strFilename) const
+std::string CCFileUtilsWinRT::getFullPathForFilenameWithinDirectory(const std::string& strDirectory, const std::string& strFilename) const
 {
     std::string unixDirectory = convertPathFormatToUnixStyle(strDirectory);
     std::string unixFilename = convertPathFormatToUnixStyle(strFilename);
-    return FileUtils::getFullPathForDirectoryAndFilename(unixDirectory, unixFilename);
+    return FileUtils::getFullPathForFilenameWithinDirectory(unixDirectory, unixFilename);
 }
 
 std::string CCFileUtilsWinRT::getSuitableFOpen(const std::string& filenameUtf8) const
@@ -131,7 +131,7 @@ std::string CCFileUtilsWinRT::getSuitableFOpen(const std::string& filenameUtf8) 
     return UTF8StringToMultiByte(filenameUtf8);
 }
 
-long CCFileUtilsWinRT::getFileSize(const std::string &filepath)
+long CCFileUtilsWinRT::getFileSize(const std::string &filepath) const
 {
     WIN32_FILE_ATTRIBUTE_DATA fad;
     if (!GetFileAttributesEx(StringUtf8ToWideChar(filepath).c_str(), GetFileExInfoStandard, &fad))
@@ -144,7 +144,7 @@ long CCFileUtilsWinRT::getFileSize(const std::string &filepath)
     return (long)size.QuadPart;
 }
 
-FileUtils::Status CCFileUtilsWinRT::getContents(const std::string& filename, ResizableBuffer* buffer)
+FileUtils::Status CCFileUtilsWinRT::getContents(const std::string& filename, ResizableBuffer* buffer) const
 {
     if (filename.empty())
         return FileUtils::Status::NotExists;
@@ -215,7 +215,7 @@ bool CCFileUtilsWinRT::isDirectoryExistInternal(const std::string& dirPath) cons
     return false;
 }
 
-bool CCFileUtilsWinRT::createDirectory(const std::string& path)
+bool CCFileUtilsWinRT::createDirectory(const std::string& path) const
 {
     CCASSERT(!path.empty(), "Invalid path");
 
@@ -269,7 +269,7 @@ bool CCFileUtilsWinRT::createDirectory(const std::string& path)
     return true;
 }
 
-bool CCFileUtilsWinRT::removeDirectory(const std::string& path)
+bool CCFileUtilsWinRT::removeDirectory(const std::string& path) const
 {
     std::wstring wpath = StringUtf8ToWideChar(path);
     std::wstring files = wpath + L"*.*";
@@ -318,7 +318,7 @@ bool CCFileUtilsWinRT::isAbsolutePath(const std::string& strPath) const
     return false;
 }
 
-bool CCFileUtilsWinRT::removeFile(const std::string &path)
+bool CCFileUtilsWinRT::removeFile(const std::string &path) const
 {
     std::wstring wpath = StringUtf8ToWideChar(path);
     if (DeleteFile(wpath.c_str()))
@@ -332,7 +332,7 @@ bool CCFileUtilsWinRT::removeFile(const std::string &path)
     }
 }
 
-bool CCFileUtilsWinRT::renameFile(const std::string &oldfullpath, const std::string& newfullpath)
+bool CCFileUtilsWinRT::renameFile(const std::string &oldfullpath, const std::string& newfullpath) const
 {
     CCASSERT(!oldfullpath.empty(), "Invalid path");
     CCASSERT(!newfullpath.empty(), "Invalid path");
@@ -363,7 +363,7 @@ bool CCFileUtilsWinRT::renameFile(const std::string &oldfullpath, const std::str
     }
 }
 
-bool CCFileUtilsWinRT::renameFile(const std::string &path, const std::string &oldname, const std::string &name)
+bool CCFileUtilsWinRT::renameFile(const std::string &path, const std::string &oldname, const std::string &name) const
 {
     CCASSERT(!path.empty(), "Invalid path");
     std::string oldPath = path + oldname;
@@ -380,7 +380,7 @@ string CCFileUtilsWinRT::getWritablePath() const
 
 void CCFileUtilsWinRT::listFilesRecursively(const std::string& dirPath, std::vector<std::string> *files) const
 {
-    std::string fullpath = fullPathForFilename(dirPath);
+    std::string fullpath = fullPathForDirectory(dirPath);
     if (isDirectoryExist(fullpath))
     {
         tinydir_dir dir;
@@ -426,7 +426,7 @@ void CCFileUtilsWinRT::listFilesRecursively(const std::string& dirPath, std::vec
 
 std::vector<std::string> CCFileUtilsWinRT::listFiles(const std::string& dirPath) const
 {
-    std::string fullpath = fullPathForFilename(dirPath);
+    std::string fullpath = fullPathForDirectory(dirPath);
     std::vector<std::string> files;
     if (isDirectoryExist(fullpath))
     {
