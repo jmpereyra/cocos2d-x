@@ -116,13 +116,12 @@ public:
      * Hide or Show the mouse cursor if there is one.
      */
     virtual void setCursorVisible(bool isVisible) override;
-    
-    
+
     /*
      * Set zoom factor for frame. This method is for debugging big resolution (e.g.new ipad) app on desktop.
      */
     void setFrameZoomFactor(float zoomFactor) override;
-    
+
     /** Retina support is disabled by default
      *  @note This method is only available on Mac.
      */
@@ -139,6 +138,7 @@ public:
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     id getCocoaWindow() override { return glfwGetCocoaWindow(_mainWindow); }
+    id getNSGLContext() override { return glfwGetNSGLContext(_mainWindow); } // stevetranby: added
 #endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 
 protected:
@@ -183,7 +183,7 @@ protected:
     float _mouseY;
 
     GLFWcursor* _cursor;
-    
+
     friend class GLFWEventHandler;
     
 public:

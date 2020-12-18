@@ -384,7 +384,7 @@ public:
 
     /** Set window icon (implemented for windows and linux).
      *
-     * @param filename A path to image file, e.g., "icons/cusom.png". 
+     * @param filename A path to image file, e.g., "icons/custom.png".
      */
     virtual void setIcon(const std::string& filename) const {};
 
@@ -441,6 +441,7 @@ public:
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     virtual id getCocoaWindow() = 0;
+    virtual id getNSGLContext() = 0; // stevetranby: added
 #endif /* (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) */
 
     /**

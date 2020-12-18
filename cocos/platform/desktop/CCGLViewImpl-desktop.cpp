@@ -39,9 +39,7 @@ THE SOFTWARE.
 #include "base/ccUtils.h"
 #include "base/ccUTF8.h"
 #include "2d/CCCamera.h"
-//#if CC_ICON_SET_SUPPORT
 #include "platform/CCImage.h"
-//#endif /* CC_ICON_SET_SUPPORT */
 
 NS_CC_BEGIN
 

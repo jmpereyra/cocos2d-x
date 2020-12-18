@@ -26,9 +26,9 @@
 #include "2d/CCCameraBackgroundBrush.h"
 #include "2d/CCCamera.h"
 #include "base/ccMacros.h"
-#include "base/ccUtils.h"
 #include "base/CCConfiguration.h"
 #include "base/CCDirector.h"
+#include "renderer/ccGLStateCache.h"
 #include "renderer/CCGLProgram.h"
 #include "renderer/CCGLProgramCache.h"
 #include "renderer/CCGLProgramState.h"
@@ -88,8 +88,21 @@ CameraBackgroundDepthBrush::CameraBackgroundDepthBrush()
 , _vao(0)
 , _vertexBuffer(0)
 , _indexBuffer(0)
+#if CC_ENABLE_CACHE_TEXTURE_DATA
+    , _backToForegroundListener(nullptr)
+#endif
 {
-    
+#if CC_ENABLE_CACHE_TEXTURE_DATA
+    _backToForegroundListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED, [this](EventCustom*)
+        {
+            _vao = 0;
+            _vertexBuffer = 0;
+            _indexBuffer = 0;
+            initBuffer();
+        }
+    );
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_backToForegroundListener, -1);
+#endif
 }
 CameraBackgroundDepthBrush::~CameraBackgroundDepthBrush()
 {
@@ -102,9 +115,12 @@ CameraBackgroundDepthBrush::~CameraBackgroundDepthBrush()
     if (Configuration::getInstance()->supportsShareableVAO())
     {
         glDeleteVertexArrays(1, &_vao);
-        glBindVertexArray(0);
+        GL::bindVAO(0);
         _vao = 0;
     }
+#if CC_ENABLE_CACHE_TEXTURE_DATA
+    Director::getInstance()->getEventDispatcher()->removeEventListener(_backToForegroundListener);
+#endif
 }
 
 CameraBackgroundDepthBrush* CameraBackgroundDepthBrush::create(float depth)
@@ -142,11 +158,17 @@ bool CameraBackgroundDepthBrush::init()
     _quad.tl.texCoords = Tex2F(0,1);
     _quad.tr.texCoords = Tex2F(1,1);
     
+    initBuffer();
+    return true;
+}
+
+void CameraBackgroundDepthBrush::initBuffer()
+{
     auto supportVAO = Configuration::getInstance()->supportsShareableVAO();
     if (supportVAO)
     {
         glGenVertexArrays(1, &_vao);
-        glBindVertexArray(_vao);
+        GL::bindVAO(_vao);
     }
 
     glGenBuffers(1, &_vertexBuffer);
@@ -174,11 +196,10 @@ bool CameraBackgroundDepthBrush::init()
     }
 
     if (supportVAO)
-        glBindVertexArray(0);
+        GL::bindVAO(0);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    return true;
 }
 
 void CameraBackgroundDepthBrush::drawBackground(Camera* /*camera*/)
@@ -206,13 +227,11 @@ void CameraBackgroundDepthBrush::drawBackground(Camera* /*camera*/)
     
     auto supportVAO = Configuration::getInstance()->supportsShareableVAO();
     if (supportVAO)
-        glBindVertexArray(_vao);
+        GL::bindVAO(_vao);
     else
     {
         glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-        glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_POSITION);
-        glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_COLOR);
-        glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_TEX_COORD);
+        GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POS_COLOR_TEX);
 
         // vertices
         glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(V3F_C4B_T2F), (GLvoid*)offsetof(V3F_C4B_T2F, vertices));
@@ -229,7 +248,7 @@ void CameraBackgroundDepthBrush::drawBackground(Camera* /*camera*/)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
     
     if (supportVAO)
-        glBindVertexArray(0);
+        GL::bindVAO(0);
     else
     {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -284,7 +303,7 @@ bool CameraBackgroundColorBrush::init()
 
 void CameraBackgroundColorBrush::drawBackground(Camera* camera)
 {
-    utils::setBlending(BlendFunc::ALPHA_NON_PREMULTIPLIED.src, BlendFunc::ALPHA_NON_PREMULTIPLIED.dst);
+    GL::blendFunc(BlendFunc::ALPHA_NON_PREMULTIPLIED.src, BlendFunc::ALPHA_NON_PREMULTIPLIED.dst);
 
     CameraBackgroundDepthBrush::drawBackground(camera);
 }
@@ -358,7 +377,7 @@ CameraBackgroundSkyBoxBrush::~CameraBackgroundSkyBoxBrush()
     if (Configuration::getInstance()->supportsShareableVAO())
     {
         glDeleteVertexArrays(1, &_vao);
-        glBindVertexArray(0);
+        GL::bindVAO(0);
         _vao = 0;
     }
 #if CC_ENABLE_CACHE_TEXTURE_DATA
@@ -461,11 +480,11 @@ void CameraBackgroundSkyBoxBrush::drawBackground(Camera* camera)
     
     if (Configuration::getInstance()->supportsShareableVAO())
     {
-        glBindVertexArray(_vao);
+        GL::bindVAO(_vao);
     }
     else
     {
-        glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_POSITION);
+        GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION);
         
         glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
         glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(Vec3), nullptr);
@@ -477,7 +496,7 @@ void CameraBackgroundSkyBoxBrush::drawBackground(Camera* camera)
     
     if (Configuration::getInstance()->supportsShareableVAO())
     {
-        glBindVertexArray(0);
+        GL::bindVAO(0);
     }
     else
     {
@@ -512,14 +531,14 @@ void CameraBackgroundSkyBoxBrush::initBuffer()
     if (Configuration::getInstance()->supportsShareableVAO() && _vao)
     {
         glDeleteVertexArrays(1, &_vao);
-        glBindVertexArray(0);
+        GL::bindVAO(0);
         _vao = 0;
     }
     
     if (Configuration::getInstance()->supportsShareableVAO())
     {
         glGenVertexArrays(1, &_vao);
-        glBindVertexArray(_vao);
+        GL::bindVAO(_vao);
     }
     
     // init vertex buffer object
@@ -551,7 +570,7 @@ void CameraBackgroundSkyBoxBrush::initBuffer()
         glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_POSITION);
         _glProgramState->applyAttributes(false);
         
-        glBindVertexArray(0);
+        GL::bindVAO(0);
     }
 }
 
