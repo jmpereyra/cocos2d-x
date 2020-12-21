@@ -664,6 +664,7 @@
     <ClCompile Include="..\..\renderer\CCVertexAttribBinding.cpp" />
     <ClCompile Include="..\..\renderer\CCVertexIndexBuffer.cpp" />
     <ClCompile Include="..\..\renderer\CCVertexIndexData.cpp" />
+    <ClCompile Include="..\..\renderer\KRTextureDebug.cpp" />
     <ClCompile Include="..\..\storage\local-storage\LocalStorage.cpp" />
     <ClCompile Include="..\..\ui\CocosGUI.cpp" />
     <ClCompile Include="..\..\ui\UIButton.cpp" />
@@ -1317,6 +1318,7 @@
     <ClInclude Include="..\..\renderer\CCBatchCommand.h" />
     <ClInclude Include="..\..\renderer\CCCustomCommand.h" />
     <ClInclude Include="..\..\renderer\CCTextureCube.h" />
+    <ClInclude Include="..\..\renderer\KRTextureDebug.h" />
     <ClInclude Include="..\..\ui\UIEditBox\UIEditBoxImpl-common.h" />
     <ClInclude Include="..\..\ui\UITabControl.h" />
     <ClInclude Include="..\..\vr\CCVRDistortion.h" />

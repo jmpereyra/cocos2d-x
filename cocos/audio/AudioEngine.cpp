@@ -561,7 +561,7 @@ void AudioEngine::printCacheSize(bool detail)
 {
     if (_audioEngineImpl)
     {
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 && !defined(WINRT))
         _audioEngineImpl->printCacheSize(detail);
 #endif
     }
