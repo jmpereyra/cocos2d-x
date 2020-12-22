@@ -2,6 +2,7 @@
 * cocos2d-x   http://www.cocos2d-x.org
 *
 * Copyright (c) 2010-2014 - cocos2d-x community
+* Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 *
 * Portions Copyright (c) Microsoft Open Technologies, Inc.
 * All Rights Reserved
@@ -41,9 +42,9 @@ namespace CocosAppWinRT
     private:
         void OnPageLoaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
         void OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args);
-/*#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
         void OnBackButtonPressed(Platform::Object^ sender, Windows::Phone::UI::Input::BackPressedEventArgs^ args);
-#endif*/
+#endif
         void CreateRenderSurface();
         void DestroyRenderSurface();
         void RecoverFromLostDevice();

@@ -2,6 +2,7 @@
 * cocos2d-x   http://www.cocos2d-x.org
 *
 * Copyright (c) 2010-2014 - cocos2d-x community
+* Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 *
 * Portions Copyright (c) Microsoft Open Technologies, Inc.
 * All Rights Reserved
@@ -36,9 +37,9 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-/* #if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
 using namespace Windows::Phone::UI::Input;
-#endif */
+#endif
 
 OpenGLESPage::OpenGLESPage() :
     OpenGLESPage(nullptr)
@@ -80,7 +81,7 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     this->Loaded +=
         ref new Windows::UI::Xaml::RoutedEventHandler(this, &OpenGLESPage::OnPageLoaded);
 
-/*#if _MSC_VER >= 1900
+#if _MSC_VER >= 1900
     if (Windows::Foundation::Metadata::ApiInformation::IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
     {
         Windows::UI::ViewManagement::StatusBar::GetForCurrentView()->HideAsync();
@@ -101,7 +102,7 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     pointerVisualizationSettings->IsContactFeedbackEnabled = false;
     pointerVisualizationSettings->IsBarrelButtonFeedbackEnabled = false;
 #endif
-#endif*/
+#endif
 
     CreateInput();
 }
@@ -446,7 +447,7 @@ void OpenGLESPage::OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Wi
     }
 }
 
-/*#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
+#if (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP) || _MSC_VER >= 1900
 /*
 We set args->Handled = true to prevent the app from quitting when the back button is pressed.
 This is because this back button event happens on the XAML UI thread and not the cocos2d-x UI thread.
@@ -456,7 +457,7 @@ EventKeyboard::KeyCode::KEY_ESCAPE event.
 
 The default behavior is to exit the app if the  EventKeyboard::KeyCode::KEY_ESCAPE event
 is not handled by the game.
-*//*
+*/
 void OpenGLESPage::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ args)
 {
     if (mRenderer)
@@ -465,4 +466,4 @@ void OpenGLESPage::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ arg
         args->Handled = true;
     }
 }
-#endif */
+#endif
