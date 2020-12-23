@@ -37,13 +37,14 @@ public:
 
     Box2dTestBed();
     virtual ~Box2dTestBed();
-
+#if CC_ENABLE_BOX2D_INTEGRATION
     bool initWithEntryID(int entryId);
 
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
     void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 private:
     int        m_entryID;
+#endif
     cocos2d::EventListenerTouchOneByOne* _touchListener;
 };
 
@@ -59,7 +60,7 @@ class Box2DView : public cocos2d::Layer
 public:
     Box2DView(void);
     virtual ~Box2DView(void);
-
+#if CC_ENABLE_BOX2D_INTEGRATION
     bool initWithEntryID(int entryId);
     std::string title() const;
     virtual void draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags) override;
@@ -78,6 +79,7 @@ protected:
     void onDraw(const cocos2d::Mat4& transform, uint32_t flags);
 
     cocos2d::CustomCommand _customCmd;
+#endif
 };
 
 #endif

@@ -34,7 +34,9 @@ USING_NS_CC;
 
 extern int g_totalEntries;
 
+#if CC_ENABLE_BOX2D_INTEGRATION
 Settings settings;
+#endif
 
 enum 
 {
@@ -43,12 +45,14 @@ enum
 
 Box2dTestBedSuite::Box2dTestBedSuite()
 {
+#if CC_ENABLE_BOX2D_INTEGRATION
     for (int entryId = 0; entryId < g_totalEntries; ++entryId)
     {
         addTestCase(g_testEntries[entryId].name, [entryId](){
             return Box2dTestBed::createWithEntryID(entryId);
         });
     }
+#endif
 }
 
 //------------------------------------------------------------------
@@ -66,6 +70,7 @@ Box2dTestBed::~Box2dTestBed()
     _eventDispatcher->removeEventListener(_touchListener);
 }
 
+#if CC_ENABLE_BOX2D_INTEGRATION
 Box2dTestBed* Box2dTestBed::createWithEntryID(int entryId)
 {
     auto layer = new (std::nothrow) Box2dTestBed();
@@ -122,6 +127,7 @@ void Box2dTestBed::onTouchMoved(Touch* touch, Event* event)
     auto currentPos = node->getPosition();
     node->setPosition(currentPos + diff);
 }
+#endif
 
 //------------------------------------------------------------------
 //
@@ -132,6 +138,7 @@ Box2DView::Box2DView(void)
 {
 }
 
+#if CC_ENABLE_BOX2D_INTEGRATION
 Box2DView* Box2DView::viewWithEntryID(int entryId)
 {
     Box2DView* pView = new (std::nothrow) Box2DView();
@@ -195,6 +202,7 @@ void Box2DView::onDraw(const Mat4 &transform, uint32_t flags)
     
     director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }
+#endif
 
 Box2DView::~Box2DView()
 {
@@ -203,6 +211,7 @@ Box2DView::~Box2DView()
     _eventDispatcher->removeEventListener(_keyboardListener);
     delete m_test;
 }
+#if CC_ENABLE_BOX2D_INTEGRATION
 
 bool Box2DView::onTouchBegan(Touch* touch, Event* event)
 {
@@ -245,3 +254,5 @@ void Box2DView::onKeyReleased(EventKeyboard::KeyCode code, Event* event)
     log("onKeyReleased, keycode: %d", static_cast<int>(code));
     m_test->KeyboardUp(static_cast<unsigned char>(code));
 }
+
+#endif

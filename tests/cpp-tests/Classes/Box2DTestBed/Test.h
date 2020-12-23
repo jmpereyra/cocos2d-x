@@ -19,6 +19,7 @@
 #ifndef TEST_H
 #define TEST_H
 
+#if CC_ENABLE_BOX2D_INTEGRATION
 #include <Box2D/Box2D.h>
 #include "GLES-Render.h"
 
@@ -193,4 +194,5 @@ protected:
 	b2Profile m_totalProfile;
 };
 
+#endif
 #endif

@@ -26,6 +26,7 @@
 
 USING_NS_CC;
 
+#if CC_ENABLE_BOX2D_INTEGRATION
 GLESDebugDraw::GLESDebugDraw()
     : mRatio( 1.0f )
 {
@@ -248,3 +249,4 @@ void GLESDebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
 
     CHECK_GL_ERROR_DEBUG();
 }
+#endif

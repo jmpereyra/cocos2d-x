@@ -15,6 +15,7 @@
 * misrepresented as being the original software.
 * 3. This notice may not be removed or altered from any source distribution.
 */
+#if CC_ENABLE_BOX2D_INTEGRATION
 #include <cstring>
 using namespace std;
 
@@ -123,3 +124,4 @@ TestEntry g_testEntries[] =
 };
 
 int g_totalEntries = sizeof(g_testEntries) / sizeof(g_testEntries[0]);
+#endif

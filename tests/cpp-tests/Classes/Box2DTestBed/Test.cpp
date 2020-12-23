@@ -15,7 +15,7 @@
 * misrepresented as being the original software.
 * 3. This notice may not be removed or altered from any source distribution.
 */
-
+#if CC_ENABLE_BOX2D_INTEGRATION
 #include "Test.h"
 #include "GLES-Render.h"
 
@@ -458,3 +458,5 @@ void Test::ShiftOrigin(const b2Vec2& newOrigin)
 {
 	m_world->ShiftOrigin(newOrigin);
 }
+
+#endif

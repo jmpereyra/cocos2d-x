@@ -33,7 +33,7 @@ class GLESDebugDraw : public b2Draw
     float32 mRatio;
     cocos2d::GLProgram* mShaderProgram;
     GLint        mColorLocation;
-
+#if CC_ENABLE_BOX2D_INTEGRATION
     void initShader( void );
 public:
     GLESDebugDraw();
@@ -57,6 +57,7 @@ public:
     virtual void DrawString(int x, int y, const char* string, ...); 
 
     virtual void DrawAABB(b2AABB* aabb, const b2Color& color);
+#endif
 };
 
 
