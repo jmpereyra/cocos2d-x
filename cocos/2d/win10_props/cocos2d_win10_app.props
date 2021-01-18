@@ -3,13 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="APP_DLLS">
     <AngleBinPath Condition=" '$(AngleBinPath)' == '' ">$(EngineRoot)external\$(COCOS2D_PLATFORM)-specific\angle\prebuilt\$(Platform)\</AngleBinPath>
-    <CurlBinPath Condition=" '$(CurlBinPath)' == '' ">$(EngineRoot)external\curl\prebuilt\$(COCOS2D_PLATFORM)\$(Platform)\</CurlBinPath>
-    <OpenSSLBinPath Condition=" '$(OpenSSLBinPath)' == '' ">$(EngineRoot)external\openssl\prebuilt\$(COCOS2D_PLATFORM)\$(Platform)\</OpenSSLBinPath>
-    <ZLibBinPath Condition=" '$(ZLibBinPath)' == '' ">$(EngineRoot)external\$(COCOS2D_PLATFORM)-specific\zlib\prebuilt\$(Platform)\</ZLibBinPath>
-    <WebsocketsBinPath Condition=" '$(WebsocketsBinPath)' == '' ">$(EngineRoot)external\websockets\prebuilt\$(COCOS2D_PLATFORM)\$(Platform)\</WebsocketsBinPath>
-    <SQLiteBinPath Condition=" '$(SQLiteBinPath)' == '' ">$(EngineRoot)external\sqlite3\libraries\$(COCOS2D_PLATFORM)\$(Platform)\</SQLiteBinPath>
-    <OggBinPath Condition=" '$(OggBinPath)' == '' ">$(EngineRoot)external\$(COCOS2D_PLATFORM)-specific\OggDecoder\prebuilt\$(Platform)\</OggBinPath>
-    <WebsocketsBinPath Condition=" '$(WebsocketsBinPath)' == '' ">$(EngineRoot)external\websockets\prebuilt\$(Platform)\</WebsocketsBinPath>
+    <VcpkgBinPath Condition="'$(Configuration)'=='Debug'">$(EngineRoot)external\win10-vcpkg.x64\installed\x64-uwp\debug\bin\</VcpkgBinPath>
+    <VcpkgBinPath Condition="'$(Configuration)'=='Release'">$(EngineRoot)external\win10-vcpkg.x64\installed\x64-uwp\bin\</VcpkgBinPath>
     <UVPath Condition=" '$(UVPath)' == '' ">$(EngineRoot)external\uv\prebuilt\$(COCOS2D_PLATFORM)\$(Platform)\</UVPath>
   </PropertyGroup>
   <ItemGroup Label="ANGLE">
@@ -19,31 +14,34 @@
     <None Include="$(AngleBinPath)libGLESv2.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(ZLibBinPath)zlib1.dll">
+    <None Condition="'$(Configuration)'=='Debug'" Include="$(VcpkgBinPath)zlibd1.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(SQLiteBinPath)sqlite3.dll">
+    <None Condition="'$(Configuration)'=='Release'" Include="$(VcpkgBinPath)zlib1.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(CurlBinPath)libcurl.dll">
+    <None Include="$(VcpkgBinPath)sqlite3.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(OpenSSLBinPath)libeay32.dll">
+    <None Include="$(VcpkgBinPath)libcurl.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(OpenSSLBinPath)ssleay32.dll">
+    <None Include="$(VcpkgBinPath)libeay32.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(OggBinPath)ogg.dll">
+    <None Include="$(VcpkgBinPath)ssleay32.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(OggBinPath)vorbis.dll">
+    <None Include="$(VcpkgBinPath)ogg.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(OggBinPath)vorbisfile.dll">
+    <None Include="$(VcpkgBinPath)vorbis.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="$(WebsocketsBinPath)websockets.dll">
+    <None Include="$(VcpkgBinPath)vorbisfile.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="$(VcpkgBinPath)websockets.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="$(UVPath)uv.dll">

@@ -36,10 +36,10 @@ THE SOFTWARE.
 #define generic GenericFromFreeTypeLibrary
 #define internal InternalFromFreeTypeLibrary
 #include <ft2build.h>
-#include <freetype.h>
-#include <ftglyph.h>
-#include <ftoutln.h>
-#include <fttrigon.h>
+#include <freetype2/freetype.h>
+#include <freetype2/ftglyph.h>
+#include <freetype2/ftoutln.h>
+#include <freetype2/fttrigon.h>
 #undef generic
 #undef internal
 
